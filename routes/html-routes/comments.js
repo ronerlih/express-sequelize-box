@@ -7,16 +7,16 @@ router.get("/", (req, res) => {
    // get comments from db and send to template
    db.Test.findAll({})
       .then((comments) => {
-         console.log(comments)
+         console.log(comments);
          res.render("index", {
-         comments: comments,
-         helpers: {
-            getFirst: function(obj, col) {
-               return obj[0].get(col);
+            comments: comments,
+            helpers: {
+               getFirst: function(obj, col) {
+                  return obj[0].get(col);
+               },
             },
-         },
+         });
       })
-   })
       .catch((err) => {
          res.status(500);
          next(err);
