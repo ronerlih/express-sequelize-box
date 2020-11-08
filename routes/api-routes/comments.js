@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../../models");
 
-// /api/commnet/create 
+// /api/commnets/create 
 // post comment route -> back to index
 router.post("/create", (req, res, next) => {
    db.Test.create(req.body)
