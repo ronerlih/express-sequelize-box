@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
       }
    },{
       carset: "utf8",
-      collate: 'utf8_general_ci' 
+      collate: "utf8_general_ci" 
    });
    return Test;
 };
