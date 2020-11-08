@@ -6,6 +6,6 @@ module.exports = {
       return obj[0].get(col);
    },
    getLength: (obj) => {
-      return obj[obj.length - 1].get('id');
+      return obj.length;
    }
 }
