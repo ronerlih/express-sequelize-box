@@ -7,7 +7,7 @@ const db = require("../../models");
 router.post("/create", (req, res, next) => {
    db.Test.create(req.body)
       .then(newComment => {
-         console.log(newComment);
+         console.log('[node] new comment:', newComment.comment);
          res.redirect("/");
       // optionally return data created
       // res.json(newComment)
