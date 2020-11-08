@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
          validate: { len: [1, 500] }
       }
    },{
-      carset: "utf8mb4",
+      carset: "utf8",
       collate: 'utf8_general_ci' 
    });
    return Test;
