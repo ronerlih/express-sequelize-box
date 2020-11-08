@@ -6,7 +6,9 @@ const db = require("../../models");
 router.get("/", (req, res) => {
    // get comments from db and send to template
    db.Test.findAll({})
-      .then((comments) => res.render("index", {
+      .then((comments) => {
+         console.log(comments)
+         res.render("index", {
          comments: comments,
          helpers: {
             get: function(obj, col) {
@@ -14,7 +16,7 @@ router.get("/", (req, res) => {
             },
          },
       })
-      )
+   })
       .catch((err) => {
          res.status(500);
          next(err);
