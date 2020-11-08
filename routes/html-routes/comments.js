@@ -11,8 +11,8 @@ router.get("/", (req, res) => {
          res.render("index", {
          comments: comments,
          helpers: {
-            get: function(obj, col) {
-               return obj.get(col);
+            getFirst: function(obj, col) {
+               return obj[0].get(col);
             },
          },
       })

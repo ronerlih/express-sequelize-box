@@ -18,12 +18,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const exphbs = require("express-handlebars");
+const helpers = require("./views/helpers");
 
 app.engine(
    "handlebars",
    exphbs({
       defaultLayout: "main",
-      partialsDir: __dirname + "/views/partials/"
+      partialsDir: __dirname + "/views/partials/",
+      helpers: helpers
    })
 );
 app.set("view engine", "handlebars");

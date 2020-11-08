@@ -1,8 +1,11 @@
-
 <div class="container">
    <div class="row">
-      <span>first comment:</span>
-      <div class="col-md-12 text-center enter_section">
+      </span>
+      <div class="col-md-12 text-center enter_section ">
+         <span>
+             (Total comments:
+               {{getLength comments }})
+         </span>
          <form action="/api/comments/create"
                method="POST">
             <input type="text"
