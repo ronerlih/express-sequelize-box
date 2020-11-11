@@ -4,8 +4,7 @@ body {
   background-color: #d7d7d7ec;
 
   /* color: white; */
-  margin:0px;
-
+  margin: 0;
 }
 
 #top-bar {
@@ -67,4 +66,3 @@ body {
   width: 398px;
   margin-bottom: 16px;
 }
-
