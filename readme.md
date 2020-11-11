@@ -1,7 +1,6 @@
 ![https://travis-ci.com/ronerlih/express-sequelize-box](https://travis-ci.com/ronerlih/express-sequelize-box.svg?branch=main&status=passed) ![https://app.codacy.com/gh/ronerlih/express-sequelize-box/dashboard](https://app.codacy.com/project/badge/Grade/d54fbe2005594f5884b61dbdf22ea604)
-# 📦 Express Sequelize box
 
-## To-Do: Readme!
+# 📦 Express Sequelize box
 
 ## Use
 - Fork or clone and copy what you need
