@@ -1,4 +1,4 @@
-[![https://travis-ci.com/ronerlih/express-sequelize-box](https://travis-ci.com/ronerlih/express-sequelize-box.svg?branch=main&status=passed)](https://travis-ci.com/ronerlih/express-sequelize-box) [![https://app.codacy.com/project/badge/Grade/d54fbe2005594f5884b61dbdf22ea604](https://app.codacy.com/gh/ronerlih/express-sequelize-box/dashboard)](https://app.codacy.com/gh/ronerlih/express-sequelize-box/dashboard)
+[![https://travis-ci.com/ronerlih/express-sequelize-box](https://travis-ci.com/ronerlih/express-sequelize-box.svg?branch=main&status=passed)](https://travis-ci.com/ronerlih/express-sequelize-box) [![https://app.codacy.com/project/badge/Grade/d54fbe2005594f5884b61dbdf22ea604](https://app.codacy.com/project/badge/Grade/d54fbe2005594f5884b61dbdf22ea604)](https://app.codacy.com/gh/ronerlih/express-sequelize-box/dashboard)
 
 # 📦 Express Sequelize box
 
