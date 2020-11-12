@@ -6,7 +6,7 @@ $("submitpoll").on("click", (event)=> {
    //=== MAKE A NEW POLL OBJECT =============================
    const newPoll = {
       user: $("#user").val().trim(),
-      question: $("#option").val().trim(),
+      question: $("#question").val().trim(),
       optionOne: $("#option-one").val().trim(),
       optionTwo: $("#option-two").val().trim(),
       optionThree: $("#option-three").val().trim(),
@@ -24,7 +24,24 @@ $("submitpoll").on("click", (event)=> {
          row.append("<p>" + newPoll.optionFour + "</p>");
          $("#polldisplay").prepend(row);
       });
-    
+   $("#user").val("");
+   $("#question").val("");
+   $("#option-one").val("");
+   $("#option-two").val("");
+   $("#option-three").val("");
+   $("#option-four").val("");
+
+});
+
+$get("/api/all", (data)=> {
+   if(data.length !== 0){
+      for(let i = 0; i < data.length; i++) {
+         const row = $("<div>");
+         row.append("<p>" + data[i].user + " created a poll.. </p>");
+         row.append("<p>" + data[i].question + "</p>");
+         $("#polldisplay").prepend(row);
+      }
+   }
 });
 
 
