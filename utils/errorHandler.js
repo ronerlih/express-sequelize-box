@@ -1,10 +1,9 @@
-module.exports = function(err, req, res, next) {
+module.exports = function (err, req, res) {
+   if (!err) throw "called with no error";
    // potential switch based on error code or msg
-   console.log(next);
 
    // log error to monitor
    // for development
-   console.error(err.message);
-   console.error(err);
+   console.log(err.message);
    return res.redirect("/");
 };
