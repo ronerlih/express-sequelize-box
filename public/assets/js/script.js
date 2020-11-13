@@ -1,4 +1,3 @@
-
 //=== CREATE POLL ========================================
 $("submitpoll").on("click", (event)=> {
    event.preventDefault();
