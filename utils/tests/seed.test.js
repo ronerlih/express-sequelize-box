@@ -1,17 +1,18 @@
 
 require("mysql2/node_modules/iconv-lite").encodingExists("cesu8");
 const seed = require("../seed.js");
-const db = require("../../models");
+let db;
 
 global.console.log = jest.fn();
 
 // clear mocks before each test
 beforeEach(() => {
+   db = require("../../models");
    jest.clearAllMocks();
 });
 
 // close db connection
-afterAll(() => db.sequelize.close());
+afterEach(() => db.sequelize.close());
 
 describe("Error handler middleware", () => {
    describe("Validation", () => {
@@ -39,7 +40,6 @@ describe("Error handler middleware", () => {
 
          // ASSERT
          expect(console.log).toBeCalledWith("\n🚀 init table seed");
-
       });
 
       // To-Do: test seed in table (sync/no-sync)

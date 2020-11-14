@@ -27,5 +27,15 @@
     "prettier": "^1.13.7",
     "stylelint": "^13.7.2",
     "stylelint-config-standard": "^20.0.0"
-  }
+  },
+  "jest": {
+   "collectCoverage": true,
+   "collectCoverageFrom": [
+      "**/*.js",
+      "!**/node_modules/**",
+      "!**/coverage/**",
+      "!**/routes/**",
+      "!**/models/index.js"
+   ]
+ }
 }
