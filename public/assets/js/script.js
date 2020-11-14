@@ -1,7 +1,6 @@
-//=== CREATE POLL DIV ON CLICK ==============================================================================================
+//=== CREATE POLL DIV ON CLICK ================================================================================
 $("#submitpoll").on("click", (event)=> {
    event.preventDefault();
-   $("cms").empty();
 
    const newPoll = {
       user: $("#user").val().trim(),
@@ -30,6 +29,7 @@ $("#submitpoll").on("click", (event)=> {
    //=== CALLING CANVAS JS CHART AND VOTING FUNCTIONS ======================================================
    collectVotes();
    renderCanvas();
+   $("#cms").empty();
    
 
 
