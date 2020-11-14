@@ -2,7 +2,7 @@
 $("#submitpoll").on("click", (event)=> {
    event.preventDefault();
 
-   //=== MAKE A NEW POLL OBJECT ==============================================
+
    const newPoll = {
       user: $("#user").val().trim(),
       question: $("#question").val().trim(),
@@ -18,13 +18,21 @@ $("#submitpoll").on("click", (event)=> {
          const row = $("<div id='vote-form'>");
          row.append("<p>" + newPoll.user + " asked: </p>");
          row.append("<p>" + newPoll.question + "</p>");
-         row.append("<input type='radio'>" + newPoll.optionOne);
-         row.append("<input type='radio'>" + newPoll.optionTwo);
-         row.append("<input type='radio'>" + newPoll.optionThree);
-         row.append("<input type='radio'>" + newPoll.optionFour);
+         row.append("<input type='radio' name='os'>" + newPoll.optionOne);
+         row.append("<input type='radio' name='os'>" + newPoll.optionTwo);
+         row.append("<input type='radio' name='os'>" + newPoll.optionThree);
+         row.append("<input type='radio' name='os'>" + newPoll.optionFour);
+         row.append("<br>");
          row.append("<button id='vote-button'>" + "Submit" + "</button>");
          $("#polldisplay").prepend(row);
       });
+
+   //=== DISPLAYING THE CHART ======================================================
+   collectVotes();
+   renderCanvas();
+   
+
+
    $("#user").val("");
    $("#question").val("");
    $("#option-one").val("");
@@ -33,6 +41,61 @@ $("#submitpoll").on("click", (event)=> {
    $("#option-four").val("");
 });
 
+//=== VOTING ================================================================
+function collectVotes(){
+   const form = document.querySelector("button");
+
+   form.addEventListener("click", (e) => {
+      const choice = document.querySelector("input[name=os]:checked").value;
+      const data = { os: choice };
+
+      fetch("http://localhost:3000/poll", {
+         method: "post",
+         body: JSON.stringify(data),
+         headers: new Headers({
+            "Content-Type": "application/json"
+         })
+      })
+         .then(res => res.json())
+         .then(data => console.log(data))
+         .catch(err => console.log(err));
+      e.preventDefault();
+   });
+}
+
+
+
+//=== IMPLEMENTING CANVAS JS CHART =============================================
+function renderCanvas(){
+   const dataPoints = [
+      {label: "option-one", y: 3},
+      {label: "option-two", y: 1},
+      {label: "option-three", y: 2},
+      {label: "option-four", y: 4}
+   ];
+   
+   const chartContainer = document.querySelector("#chartContainer");
+   // taking data and rendring in chart
+   if(chartContainer){
+   
+      // ajax call to get data
+       
+      const chart = new CanvasJS.Chart("chartContainer", {
+         animationEnabled: true,
+         theme: "theme1",
+         title: {
+            text: "Bar Results"
+         },
+         data: [
+            {
+               type: "column",
+               dataPoints: dataPoints
+            }
+         ]
+      });
+      chart.render();
+   }
+}
 
 
 
