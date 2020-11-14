@@ -2,11 +2,10 @@
 
 # 📦 Express Sequelize box
 
-## Use
-
+## 🍽 Use
 -   Fork or clone and copy what you need
 
-## 🗒️  Development notes
+## 🗒️ Development notes
 
 ### 🗃️ Folder structure
 ```sh
