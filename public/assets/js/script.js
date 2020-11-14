@@ -1,9 +1,7 @@
-
-//=== CREATE POLL ========================================
-$("submitpoll").on("click", (event)=> {
+//=== CREATE POLL DIV ON CLICK ================================================================================
+$("#submitpoll").on("click", (event)=> {
    event.preventDefault();
 
-   //=== MAKE A NEW POLL OBJECT =============================
    const newPoll = {
       user: $("#user").val().trim(),
       question: $("#question").val().trim(),
@@ -16,33 +14,86 @@ $("submitpoll").on("click", (event)=> {
 
    $.post("/api/new", newPoll)
       .then(() => {
-         const row = $("<div>");
-         row.append("<p>" + newPoll.user + "asked: </p>");
-         row.append("<p>" + newPoll.optionOne + "</p>");
-         row.append("<p>" + newPoll.optionTwo + "</p>");
-         row.append("<p>" + newPoll.optionThree + "</p>");
-         row.append("<p>" + newPoll.optionFour + "</p>");
+         const row = $("<div id='vote-form'>");
+         row.append("<p>" + newPoll.user + " asked: </p>");
+         row.append("<p>" + newPoll.question + "</p>");
+         row.append("<input type='radio' name='os'>" + newPoll.optionOne);
+         row.append("<input type='radio' name='os'>" + newPoll.optionTwo);
+         row.append("<input type='radio' name='os'>" + newPoll.optionThree);
+         row.append("<input type='radio' name='os'>" + newPoll.optionFour);
+         row.append("<br>");
+         row.append("<button id='vote-button'>" + "Submit" + "</button>");
          $("#polldisplay").prepend(row);
       });
+
+   //=== CALLING CANVAS JS CHART AND VOTING FUNCTIONS ======================================================
+   collectVotes();
+   renderCanvas();
+   $("#cms").empty();
+   
+
+
    $("#user").val("");
    $("#question").val("");
    $("#option-one").val("");
    $("#option-two").val("");
    $("#option-three").val("");
    $("#option-four").val("");
-
 });
 
-$get("/api/all", (data)=> {
-   if(data.length !== 0){
-      for(let i = 0; i < data.length; i++) {
-         const row = $("<div>");
-         row.append("<p>" + data[i].user + " created a poll.. </p>");
-         row.append("<p>" + data[i].question + "</p>");
-         $("#polldisplay").prepend(row);
-      }
+//=== VOTING ============================================================================================
+function collectVotes(){
+   const form = document.querySelector("button");
+
+   form.addEventListener("click", (e) => {
+      const choice = document.querySelector("input[name=os]:checked").value;
+      const data = { os: choice };
+
+      fetch("http://localhost:3000/poll", {
+         method: "post",
+         body: JSON.stringify(data),
+         headers: new Headers({
+            "Content-Type": "application/json"
+         })
+      })
+         .then(res => res.json())
+         .then(data => console.log(data))
+         .catch(err => console.log(err));
+      e.preventDefault();
+   });
+}
+
+//=== CANVAS JS CHART ======================================================================
+function renderCanvas(){
+   const dataPoints = [
+      {label: "option-one", y: 3},
+      {label: "option-two", y: 1},
+      {label: "option-three", y: 2},
+      {label: "option-four", y: 2}
+   ];
+   
+   const chartContainer = document.querySelector("#chartContainer");
+   // taking data and rendring in chart
+   if(chartContainer){
+   
+      // ajax call to get data
+       
+      const chart = new CanvasJS.Chart("chartContainer", {
+         animationEnabled: true,
+         theme: "theme1",
+         title: {
+            text: "Bar Results"
+         },
+         data: [
+            {
+               type: "column",
+               dataPoints: dataPoints
+            }
+         ]
+      });
+      chart.render();
    }
-});
+}
 
 
 
@@ -50,31 +101,5 @@ $get("/api/all", (data)=> {
 
 
 
-
-
-
-
-//=== OLD ABENDONED APPROACH ===================================
-// $('button').on('click', function(){
-//     displayQuestionair();
-// });
-// function displayQuestionair(){
-//     $('#newpollform').empty();
-//     const divEl = $('<div>').addClass('addpoll');
-//     const questEl = $('<h3>').text('Fav bar tonight?');
-//     const breakEl = $('<br>');
-//     const inputElOne = $('<input>').attr('type', 'radio');
-//     const labelOne = $('<label>').text('First Option');
-//     const inputElTwo = $('<input>').attr('type', 'radio');
-//     const labelTwo = $('<label>').text('Second Option');
-//     const inputThree = $('<input>').attr('type', 'radio');
-//     const labelThree = $('<label>').text('Third Option');
-//     const inputFour = $('<input>').attr('type', 'radio');
-//     const labelFour = $('<label>').text('Four Option');
-//     divEl.append(questEl, inputElOne, labelOne, inputElTwo, labelTwo);
-//     divEl.append(breakEl);
-//     divEl.append(inputThree, labelThree, inputFour, labelFour);
-//     $('#newpollform').append(divEl);
-// }
 
 

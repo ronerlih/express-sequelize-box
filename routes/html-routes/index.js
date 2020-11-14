@@ -1,13 +1,13 @@
-const express = require("express");
-const router = express.Router();
-const commentsRoute = require("./comments");
+// const express = require("express");
+// const router = express.Router();
+// const commentsRoute = require("./htmlRoutes");
 
 // get route -> index
-router.get("/", (req, res) => {
-   res.redirect("/comments");
-});
+// router.get("/", (req, res) => {
+//   res.redirect("/comments");
+// });
 
 // comments page
-router.use("/comments", commentsRoute);
+// router.use("/comments", commentsRoute);
 
-module.exports = router;
+// module.exports = router;

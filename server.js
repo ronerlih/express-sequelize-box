@@ -1,5 +1,10 @@
 //=== DEPENDENCIES ============================================
 const express = require("express");
+const apiRoutes = require("./routes/api-routes");
+const htmlRoutes = require("./routes/html-routes");
+const db = require("./models");
+const seed = require("./utils/seed");
+const errorHandler = require("./utils/errorHandler");
 
 //=== SET UP THE EXPRESS APP ==================================
 const app = express();
@@ -9,16 +14,20 @@ const PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-var exphbs = require("express-handlebars");
+//=== REQUIRE HANDLEBARS =========
+const exphbs = require("express-handlebars");
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+// Register '.handlebars' extension with exphbs
+app.engine('handlebars', exphbs());
+// Set our default template engine to "handlebars"
+app.set('view engine', 'handlebars');
 
 //=== STATIC DIRECTORY ========================================
-app.use(express.static("./public"));
+app.use(express.static("public"));
 
 //=== ROUTES ==========================================================
-require("./routes/api-routes.js")(app);
+var routes = require("./routes/html-routes/htmlRoutes");
+app.use(routes);
 
 //=== START THE SERVER TO BEGIN LISTENING ==========================================================
 app.listen(PORT, () => {
