@@ -1,6 +1,6 @@
-const form = document.getElementById("vote-form");
+const form = document.querySelector("button");
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("click", (e) => {
    const choice = document.querySelector("input[name=os]:checked").value;
    const data = { os: choice };
 
@@ -20,9 +20,9 @@ form.addEventListener("submit", (e) => {
 //=== CANVAS JS DOCUMENTATION =============================================
 
 const dataPoints = [
-   {label: "option-one", y: 0},
-   {label: "option-two", y: 0},
-   {label: "option-three", y: 0},
+   {label: "option-one", y: 3},
+   {label: "option-two", y: 1},
+   {label: "option-three", y: 2},
    {label: "option-four", y: 0}
 ];
 

@@ -22,6 +22,7 @@ $("#submitpoll").on("click", (event)=> {
          row.append("<input type='radio'>" + newPoll.optionTwo);
          row.append("<input type='radio'>" + newPoll.optionThree);
          row.append("<input type='radio'>" + newPoll.optionFour);
+         row.append("<button id='vote-button'>" + "Submit" + "</button>");
          $("#polldisplay").prepend(row);
       });
    $("#user").val("");
