@@ -1,3 +1,4 @@
+const config = require("./config");
 const express = require("express");
 const apiRoutes = require("./routes/api-routes");
 const htmlRoutes = require("./routes/html-routes");
@@ -37,7 +38,7 @@ app.use(htmlRoutes);
 app.use(errorHandler);
 
 // drops all tables on eevery restart
-db.sequelize.sync({ force: true }).then(async () => {
+db.sequelize.sync({ force: config.sync }).then(async () => {
    // seed db
    await seed(db.Test);
 

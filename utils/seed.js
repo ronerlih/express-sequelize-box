@@ -1,5 +1,7 @@
+const config = require("../config");
+
 module.exports = function(table) {
-   if (process.env.NODE_ENV !== "production") {
+   if (config.sync) {
       console.log("\n🚀 init table seed");
       return table.create({ comment: "🚀 init" });
    }
