@@ -1,4 +1,4 @@
-//=== CREATE POLL ============================================================
+//=== CREATE POLL DIV ON CLICK ==============================================================================================
 $("#submitpoll").on("click", (event)=> {
    event.preventDefault();
 
@@ -27,7 +27,7 @@ $("#submitpoll").on("click", (event)=> {
          $("#polldisplay").prepend(row);
       });
 
-   //=== DISPLAYING THE CHART ======================================================
+   //=== CALLING CANVAS JS CHART AND VOTING FUNCTIONS ======================================================
    collectVotes();
    renderCanvas();
    
@@ -41,7 +41,7 @@ $("#submitpoll").on("click", (event)=> {
    $("#option-four").val("");
 });
 
-//=== VOTING ================================================================
+//=== VOTING ============================================================================================
 function collectVotes(){
    const form = document.querySelector("button");
 
@@ -63,9 +63,7 @@ function collectVotes(){
    });
 }
 
-
-
-//=== IMPLEMENTING CANVAS JS CHART =============================================
+//=== CANVAS JS CHART ======================================================================
 function renderCanvas(){
    const dataPoints = [
       {label: "option-one", y: 3},
