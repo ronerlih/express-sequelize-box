@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //=== STATIC DIRECTORY ========================================
-app.use(express.static("./public"));
+app.use(express.static("public"));
 
 //=== ROUTES ==========================================================
 require("./routes/api-routes.js")(app);
