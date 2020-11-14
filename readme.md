@@ -93,13 +93,13 @@
     -   Testing db in test env
 -   views/**helpers**/index.js: 
     -   getLength helper
- - coverage:
-      -   reported with Jest (Istanbul)
-      -   config in `package.json`
-      -   send report in `travis.yml`
-      -   set up env var on travis! woth codacy project api token: https://docs.codacy.com/coverage-reporter/adding-coverage-to-your-repository/
-      -   set up locally in .env file: `CODACY_PROJECT_TOKEN=<your project API Token>`
-      -   send report locally (after env var is set): `bash <(curl -Ls https://coverage.codacy.com/get.sh) report`
+- coverage:
+    -   reported with Jest (Istanbul)
+    -   config in `package.json`
+    -   send report in `travis.yml`
+    -   set up env var on travis! woth codacy project api token: https://docs.codacy.com/coverage-reporter/adding-coverage-to-your-repository/
+    -   set up locally in .env file: `CODACY_PROJECT_TOKEN=<your project API Token>`
+    -   send report locally (after env var is set): `bash <(curl -Ls https://coverage.codacy.com/get.sh) report`
 
 
 ### ⛑️ To-Do 
