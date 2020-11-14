@@ -66,7 +66,7 @@
         -   ignore: `.eslintignore`
     -   **Jest**: jestjs.io
         -   test locally in the command line: `jest`
-
+       
 -   **CODACY** (codacy.com) runs:
       -   **styleLint** (css linter): https://github.com/stylelint/stylelint
           -   lint locally in the command line: `stylelint "**/*.css"` 
@@ -74,6 +74,7 @@
       -   **remark** (markdown linter): https://www.npmjs.com/package/remark
           -   lint locally in the command line: `remark .` 
           -   config: `.remarkrc`
+      -   **coverage report** read and analysed, send by travisCI
       -   more linters on the codacy config (codady.com)
 -   **Monitoring dashboard**: [loggly.com](https://ronerlih.loggly.com/search?terms=tag:heroku&from=-20m&until=now&source_group=&newtab=1#terms=&from=2020-11-07T12:03:00.296Z&until=2020-11-07T13:03:00.296Z&source_group=)
 
@@ -92,6 +93,13 @@
     -   Testing db in test env
 -   views/**helpers**/index.js: 
     -   getLength helper
+ - coverage:
+      -   reported with Jest (Istanbul)
+      -   config in `package.json`
+      -   send report in `travis.yml`
+      -   set up env var on travis! woth codacy project api token: https://docs.codacy.com/coverage-reporter/adding-coverage-to-your-repository/
+      -   set up locally in .env file: `CODACY_PROJECT_TOKEN=<your project API Token>`
+      -   send report locally (after env var is set): `bash <(curl -Ls https://coverage.codacy.com/get.sh) report`
 
 
 ### ⛑️ To-Do 
