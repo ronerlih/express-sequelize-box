@@ -1,8 +1,8 @@
-//=== CREATE POLL ========================================
+//=== CREATE POLL ============================================================
 $("#submitpoll").on("click", (event)=> {
    event.preventDefault();
 
-   //=== MAKE A NEW POLL OBJECT =============================
+   //=== MAKE A NEW POLL OBJECT ==============================================
    const newPoll = {
       user: $("#user").val().trim(),
       question: $("#question").val().trim(),
@@ -15,8 +15,8 @@ $("#submitpoll").on("click", (event)=> {
 
    $.post("/api/new", newPoll)
       .then(() => {
-         const row = $("<div>");
-         row.append("<p>" + newPoll.user + "asked: </p>");
+         const row = $("<div id='vote-form'>");
+         row.append("<p>" + newPoll.user + " asked: </p>");
          row.append("<p>" + newPoll.question + "</p>");
          row.append("<input type='radio'>" + newPoll.optionOne);
          row.append("<input type='radio'>" + newPoll.optionTwo);
@@ -31,8 +31,6 @@ $("#submitpoll").on("click", (event)=> {
    $("#option-three").val("");
    $("#option-four").val("");
 });
-
-
 
 
 
