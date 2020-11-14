@@ -1,7 +1,7 @@
 //=== CREATE POLL DIV ON CLICK ==============================================================================================
 $("#submitpoll").on("click", (event)=> {
    event.preventDefault();
-
+   $("cms").empty();
 
    const newPoll = {
       user: $("#user").val().trim(),
@@ -69,7 +69,7 @@ function renderCanvas(){
       {label: "option-one", y: 3},
       {label: "option-two", y: 1},
       {label: "option-three", y: 2},
-      {label: "option-four", y: 4}
+      {label: "option-four", y: 2}
    ];
    
    const chartContainer = document.querySelector("#chartContainer");
