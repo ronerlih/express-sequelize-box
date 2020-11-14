@@ -93,7 +93,7 @@
     -   Testing db in test env
 -   views/**helpers**/index.js: 
     -   getLength helper
-- coverage:
+-   coverage:
     -   reported with Jest (Istanbul)
     -   config in `package.json`
     -   send report in `travis.yml`
