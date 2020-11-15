@@ -2,7 +2,7 @@
 
 # 📦 Express Sequelize box
 
-#####:earth_africa: [live](https://express-sequelize-box.herokuapp.com/) on heroku
+##### :earth_africa: [live](https://express-sequelize-box.herokuapp.com/) on heroku
 ## 🍽 Use
 -   Fork or clone and copy what you need
 
@@ -28,8 +28,11 @@
 │   ├── layouts
 │   │   └── main.handlebars
 │   ├── partials
-│   │   ├── postComments.handlebars 
-│   │   └── viewComments.handlebars
+│   │   ├── comments
+│   │   │   ├── postComments.handlebars
+│   │   │   └── viewComments.handlebars
+│   │   ├── footer.handlebars
+│   │   └── headline.handlebars
 │   └── helpers    <- # registering handlebars helper functions
 │       ├── index.js
 │       └── tests
