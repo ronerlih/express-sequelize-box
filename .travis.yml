@@ -10,7 +10,6 @@ cache:
 services:
   - mysql
 before_install:
-  - mysql -e 'DROP DATABASE IF EXISTS test;'
-  - mysql -e 'CREATE DATABASE test;'
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS test_db;'
 after_sucess:
   - bash <(curl -Ls https://coverage.codacy.com/get.sh) report

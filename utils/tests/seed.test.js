@@ -9,11 +9,11 @@ global.console.log = jest.fn();
 // jest hook before all tests
 beforeAll(() => {
    db = require("../../models");
-   // jest.clearAllMocks();
+   jest.clearAllMocks();
 });
 
 // jest hook after all tests
-afterAll(() => db.sequelize.close());
+afterEach(() => db.sequelize.close());
 
 describe("Error handler middleware", () => {
    
@@ -30,7 +30,7 @@ describe("Error handler middleware", () => {
          const matchObj = { comment: "🚀 init" };
          
          // ACT
-         await seed(db);
+         seed(db);
 
          // ASSERT
          expect(seed(db)).resolves.toMatchObject(matchObj);
@@ -54,13 +54,13 @@ describe("Error handler middleware", () => {
          const expectedError = new Object({"name": "SequelizeValidationError"});
  
          // ASSERT
-         // expect(db.Comment.create({comment: badMassage})).rejects.toMatchObject(expectedError);
+         expect(db.Comment.create({comment: badMassage})).rejects.toMatchObject(expectedError);
       });
    });
 
    describe("Side-effects", () => {
       it("logs an 'init seed' msg", async () => {
-         await seed(db);
+         seed(db);
 
          // ASSERT
          expect(console.log).toBeCalledWith("\n🚀 init table seed");
