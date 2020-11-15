@@ -8,8 +8,7 @@ global.console.log = jest.fn();
 
 // jest hook before all tests
 beforeAll(() => {
-   
-   jest.clearAllMocks();
+   // jest.clearAllMocks();
 });
 
 // jest hook after all tests
