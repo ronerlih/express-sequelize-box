@@ -9,6 +9,7 @@ global.console.log = jest.fn();
 // jest hook before all tests
 beforeAll(() => {
    db = require("../../models");
+   console.log(db);
    jest.clearAllMocks();
 });
 

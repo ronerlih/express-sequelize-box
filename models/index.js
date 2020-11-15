@@ -12,11 +12,8 @@ const db = {};
 let sequelize;
 if (config.use_env_variable) {
    sequelize = new Sequelize(process.env[config.use_env_variable], config);
-   console.log("[debug] db connected");
 } else {
    sequelize = new Sequelize(config.database, config.username, process.env.LOCAL_MYSQL_PASS, config);
-
-   console.log("[debug] db connected");
 }
 
 fs.readdirSync(__dirname)
