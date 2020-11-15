@@ -2,6 +2,7 @@
 
 # 📦 Express Sequelize box
 
+#####:earth_africa: [live](https://express-sequelize-box.herokuapp.com/) on heroku
 ## 🍽 Use
 -   Fork or clone and copy what you need
 
