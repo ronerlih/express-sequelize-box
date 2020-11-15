@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+  
+* { font-family: 'Roboto', sans-serif; }
 :root {
-  --footer-height: 60px;
+  --footer-height: 52px;
 }
 
 a:hover {
