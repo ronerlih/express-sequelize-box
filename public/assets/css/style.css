@@ -1,44 +1,48 @@
 :root {
-   --footer-height: 60px;
- }
+  --footer-height: 60px;
+}
 
 a:hover {
-   text-decoration: none;
+  text-decoration: none;
 }
+
 /* svg:hover {
    fill: red;
 } */
 .main-container {
-   min-height: calc(100vh - var(--footer-height));
+  min-height: calc(100vh - var(--footer-height));
 }
-.gradient {
-   fill: url('#gradient-layer');
 
-   pointer-events: all;
- }
- .gradient ~ defs stop {
-   transition: 1s;
- }
- 
+.gradient {
+  fill: url('#gradient-layer');
+  pointer-events: all;
+}
+
+.gradient ~ defs stop {
+  transition: 1s;
+}
+
 .gradient.hover ~ defs stop:first-child {
-   stop-color: #8940de;
- }
- 
+  stop-color: #8940de;
+}
+
 .gradient.hover ~ defs stop:nth-child(2) {
-   stop-color: #e1a728;
- }
+  stop-color: #e1a728;
+}
+
 .gradient.hover ~ defs stop:last-child {
-   stop-color: #24bed2;
- }
+  stop-color: #24bed2;
+}
 
 .footer {
-   height: var(--footer-height);
-   line-height: 60px;
+  height: var(--footer-height);
+  line-height: 60px;
 }
 
 body {
   width: 100%;
   background-color: #d7d7d7ec;
+
   /* color: white; */
   margin: 0;
   padding: 0;
