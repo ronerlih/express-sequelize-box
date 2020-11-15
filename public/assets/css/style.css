@@ -2,9 +2,11 @@
 
 * { font-family: 'Roboto', sans-serif; }
 
+/* stylelint-disable */
 :root {
   --footer-height: 52px;
 }
+/* stylelint-enable */
 
 a:hover {
   text-decoration: none;
@@ -23,7 +25,7 @@ a:hover {
 }
 
 .gradient ~ defs stop {
-  transition: 1s;
+  transition: 0.3s;
 }
 
 .gradient.hover ~ defs stop:first-child {
