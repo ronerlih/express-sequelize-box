@@ -120,7 +120,7 @@ footer {
   width: 100%;
 }
 input[type=text] {
-  width: 400px;
+  width: 300px;
   display: block;
   text-align: center;
   padding: 0px;
@@ -143,11 +143,12 @@ input[type=text]:focus {
   box-shadow: none !important;
 }
 label {
-  padding: 12px 12px 3px 0px;
+  padding: 12px 12px -5px 10px;
   font-family: 'Text Me One', sans-serif;
   color: #007bfb;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 10px;
+  letter-spacing: 1px;
   text-align: center;
   display: inline-block;
 }
