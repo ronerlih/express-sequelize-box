@@ -1,9 +1,7 @@
-const config = require("../config");
+const db = require("../models");
 
-module.exports = function(table) {
-   if (config.sync) {
-      console.log("\n🚀 init table seed");
-      return table.create({ comment: "🚀 init" });
-   }
-   return Promise.resolve();
+module.exports = function() {
+
+   console.log("\n🚀 init table seed");
+   return db.Comment.create({ comment: "🚀 init" });
 };

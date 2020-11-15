@@ -1,10 +1,47 @@
+:root {
+   --footer-height: 60px;
+ }
+
+a:hover {
+   text-decoration: none;
+}
+/* svg:hover {
+   fill: red;
+} */
+.main-container {
+   min-height: calc(100vh - var(--footer-height));
+}
+.gradient {
+   fill: url('#gradient-layer');
+
+   pointer-events: all;
+ }
+ .gradient ~ defs stop {
+   transition: 2s;
+ }
+ 
+.gradient.hover ~ defs stop:first-child {
+   stop-color: #8940de;
+ }
+ 
+.gradient.hover ~ defs stop:nth-child(2) {
+   stop-color: #e1a728;
+ }
+.gradient.hover ~ defs stop:last-child {
+   stop-color: #24bed2;
+ }
+
+.footer {
+   height: var(--footer-height);
+   line-height: 60px;
+}
+
 body {
   width: 100%;
-  height: 900px;
   background-color: #d7d7d7ec;
-
   /* color: white; */
   margin: 0;
+  padding: 0;
 }
 
 #top-bar {
@@ -44,7 +81,6 @@ body {
 
 #enter_text {
   width: 400px;
-  height: 40px;
   padding-top: 10px;
   padding-bottom: 10px;
   margin: auto;

@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 const db = require("../../models");
 
-// routing (html) /commnets
+// HOME page
 router.get("/", (req, res) => {
    // get comments from db and send to template
-   db.Test.findAll({})
+   db.Comment.findAll({})
       .then((comments) => {
          res.render("index", { comments: comments } );
       })

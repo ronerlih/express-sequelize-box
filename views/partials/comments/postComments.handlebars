@@ -5,12 +5,13 @@
    </span>
    <form action="/api/comments/create"
          method="POST">
-      <input type="text"
+      <textarea 
+             rows="4" cols="50"
              class="form-control"
              name="comment"
              value=""
              placeholder="add your comment"
-             id="enter_text">
+             id="enter_text"></textarea>
       <button type="submit"
               class="btn btn-dark"
               id="text-enter-button">comment</button>
