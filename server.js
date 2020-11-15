@@ -38,11 +38,13 @@ app.use(htmlRoutes);
 app.use(errorHandler);
 
 // drops all tables on eevery restart
-db.sequelize.sync({ force: config.sync }).then(async () => {
-   // seed db
-   await seed(db.Test);
+db.sequelize
+   .sync({ force: config.sync && process.env !== "test" })
+   .then(async () => {
+      // seed db if sync is true (if flushing the db)
+      if(config.sync) await seed(db);
 
-   app.listen(PORT, () => {
-      console.log("🌎 => live on http://localhost:%s", PORT);
+      app.listen(PORT, () => {
+         console.log("\n🌎 => live on http://localhost:%s", PORT);
+      });
    });
-});

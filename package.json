@@ -4,7 +4,7 @@
   "description": "-Node \r -Express \r -MySQL \r -Handlebars \r -Jquery",
   "main": "server.js",
   "scripts": {
-    "test": "NODE_ENV=test && npm run lint && jest",
+    "test": "NODE_ENV=test && npm run lint && jest --runInBand",
     "start": "node server.js",
     "lint": "eslint --quiet .",
     "fix": "eslint --fix .",
@@ -29,13 +29,13 @@
     "stylelint-config-standard": "^20.0.0"
   },
   "jest": {
-   "collectCoverage": true,
-   "collectCoverageFrom": [
+    "collectCoverage": true,
+    "collectCoverageFrom": [
       "**/*.js",
       "!**/node_modules/**",
       "!**/coverage/**",
-      "!**/routes/**",
+      "!**/config/**",
       "!**/models/index.js"
-   ]
- }
+    ]
+  }
 }

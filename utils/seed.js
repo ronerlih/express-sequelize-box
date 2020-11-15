@@ -1,9 +1,10 @@
-const config = require("../config");
+module.exports = function(db) {
 
-module.exports = function(table) {
-   if (config.sync) {
-      console.log("\n🚀 init table seed");
-      return table.create({ comment: "🚀 init" });
-   }
-   return Promise.resolve();
+   console.log("\n🚀 init table seed");
+
+   // check if db and table exist and connected
+   if (!(db && db.Comment))  
+      throw new Error("no Comments table in database, did you create the db?\nHave a look at: db/schema.sql and run it in your mysql client.");
+
+   return db.Comment.create({ comment: "🚀 init" });
 };
