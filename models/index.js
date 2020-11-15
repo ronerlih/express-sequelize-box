@@ -15,6 +15,7 @@ if (config.use_env_variable) {
 } else {
    sequelize = new Sequelize(config.database, config.username, process.env.LOCAL_MYSQL_PASS, config);
 
+   console.log("[debug] db connected");
 }
 
 fs.readdirSync(__dirname)
