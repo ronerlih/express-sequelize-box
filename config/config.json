@@ -7,7 +7,7 @@
   },
   "test": {
     "username": "root",
-    "database": "test_db",
+    "database": "test",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "pool": {
