@@ -1,13 +1,13 @@
 {
   "development": {
     "username": "root",
-    "database": "test_db",
+    "database": "comments_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "database": "test",
+    "database": "test_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "pool": {
