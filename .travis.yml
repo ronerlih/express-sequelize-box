@@ -13,3 +13,8 @@ before_install:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS test_db;'
 after_sucess:
   - bash <(curl -Ls https://coverage.codacy.com/get.sh) report
+test:
+  adapter: mysql2
+  database: test_db
+  username: root
+  encoding: utf8
