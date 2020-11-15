@@ -17,7 +17,7 @@ a:hover {
    pointer-events: all;
  }
  .gradient ~ defs stop {
-   transition: 2s;
+   transition: 1s;
  }
  
 .gradient.hover ~ defs stop:first-child {

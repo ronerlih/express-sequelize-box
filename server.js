@@ -42,7 +42,7 @@ db.sequelize.sync({ force: config.sync }).then(async () => {
    
    // seed db if sync is true (if flushing the db)
    if(config.sync) 
-      await seed();
+      await seed(db);
 
    app.listen(PORT, () => {
       console.log("\n🌎 => live on http://localhost:%s", PORT);

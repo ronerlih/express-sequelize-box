@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "database": "test_db",
+    "database": "comments_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
