@@ -125,7 +125,7 @@ input[type=text] {
   text-align: center;
   padding: 0px;
   margin: 0 auto;
-  background-color: #ffb757;
+  background-color: #ffffff;
   font-family: 'Text Me One', sans-serif;
   color: #007bfb;
   font-size: 12px;
@@ -136,7 +136,7 @@ input[type=text] {
   outline: none;
 }
 input[type=text]:focus {
-  background-color: #ffb757;
+  background-color: #ffffff;
   border: none;
   border: 1px solid #007bfb;
   outline: none !important;
