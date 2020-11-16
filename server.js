@@ -18,9 +18,13 @@ app.use(express.json());
 const exphbs = require("express-handlebars");
 
 // Register '.handlebars' extension with exphbs
-app.engine('handlebars', exphbs());
+app.engine('handlebars', exphbs({
+   defaultLayout: 'main',
+   extname: '.handlebars'
+}));
 // Set our default template engine to "handlebars"
 app.set('view engine', 'handlebars');
+app.set('views', __dirname + '/views');
 
 //=== STATIC DIRECTORY ========================================
 app.use(express.static("public"));

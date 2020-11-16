@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>POLLIFE</title>
+    {{> head}}
+  </head>
+
+    <tbody>
+        {{#each polls}}
+        <tr>
+            <td> {{this.dataValues.question}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{{ footer }}
+</html>

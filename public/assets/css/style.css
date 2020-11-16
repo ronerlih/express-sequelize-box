@@ -92,19 +92,33 @@ h2 {
   font-family: 'Text Me One', sans-serif;
   line-height: 50%;
 }
-h3 {
+h3, a {
   color: #007bfb;
   font-size: 20px;
   text-transform: uppercase;
   font-family: 'Text Me One', sans-serif;
 }
 h4 {
-  color: #007bfb;
+  color: #ffb757;
   font-size: 10px;
   letter-spacing: 1px;
   text-transform: uppercase;
   font-family: 'Text Me One', sans-serif;
-  
+}
+h5 {
+  color: #ffb757;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: 'Text Me One', sans-serif;
+  line-height: 50%;
+}
+h6 {
+    color: #ffffff;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'Text Me One', sans-serif;
 }
 footer {
   color: #007bfb;
@@ -170,7 +184,30 @@ label {
 .form-group {
   border-radius: 5px;
   background-color: #ffb757;
-  padding: 20px;
-  margin-bottom: 80px;
+  padding: 10px;
+  margin-bottom: 40px;
   text-align: center;
+}
+.box {
+  width: 300px;
+  margin: 50px auto;
+  background: #007bfb;
+  padding: 20px;
+  text-align: center;
+  font-weight: 900;
+  color: #fff;
+  font-family: arial;
+  position:relative;
+}
+.sb1:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #007bfb;
+  border-bottom: 10px solid transparent;
+  right: 50%;
+  bottom: -18px;
 }
