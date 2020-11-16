@@ -27,7 +27,7 @@ $("#submitpoll").on("click", (event)=> {
       });
 
    //=== CALLING CANVAS JS CHART AND VOTING FUNCTIONS ======================================================
-   collectVotes();
+
    renderCanvas();
    $("#cms").empty();
    
@@ -42,26 +42,42 @@ $("#submitpoll").on("click", (event)=> {
 });
 
 //=== VOTING ============================================================================================
-function collectVotes(){
-   const form = document.querySelector("button");
 
-   form.addEventListener("click", (e) => {
-      const choice = document.querySelector("input[name=os]:checked").value;
-      const data = { os: choice };
+ 
+$(document).on("click", "#vote-form", () => {
+   const choice = document.querySelector("input[name=os]:checked").value;
+   const data = { os: choice };
 
-      fetch("http://localhost:3360/poll", {
-         method: "post",
-         body: JSON.stringify(data),
-         headers: new Headers({
-            "Content-Type": "application/json"
-         })
+   fetch("http://localhost:3360/poll", {
+      method: "post",
+      body: JSON.stringify(data),
+      headers: new Headers({
+         "Content-Type": "application/json"
       })
-         .then(res => res.json())
-         .then(data => console.log(data))
-         .catch(err => console.log(err));
-      e.preventDefault();
+   })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+   e.preventDefault();
+});
+
+voteChart();
+
+//=== SHOWING POINTS IN THE CHART =========================================================
+
+
+function voteChart(){
+   $.ajax({
+      url: "/api/all",
+      method: "GET"
+   }).then((response) => {
+      console.log(response);
    });
 }
+
+
+
+
 
 //=== CANVAS JS CHART ======================================================================
 function renderCanvas(){

@@ -1,4 +1,4 @@
-//=== INITIATION THE CONNECTION TO MYSQL ================
+//=== INITIATION THE CONNECTION TO MYSQL =========================
 const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize("polls", "root", "Kristin91", {
@@ -12,5 +12,5 @@ const sequelize = new Sequelize("polls", "root", "Kristin91", {
    }
 });
 
-//=== EXPORTS THE CONNECTION FOR OTHER FILES TO USE
+//=== EXPORTS THE CONNECTION FOR OTHER FILES TO USE ===============
 module.exports = sequelize;
