@@ -7,7 +7,7 @@ const db = require("../../models");
 router.route("/")
    // POST to Comments
    .post((req, res, next) => {
-      db.Comment.create(req.body)
+      db.Comment.create({comment: req.body.comment})
          .then((newComment) => {
             console.log("[node] new comment:", newComment.comment);
             res.redirect("/");

@@ -37,14 +37,16 @@ app.use(htmlRoutes);
 // error handling
 app.use(errorHandler);
 
-// drops all tables on eevery restart
+// drop tables on restart?
+const dropTables = true;
 db.sequelize
-   .sync({ force: config.sync && process.env !== "test" })
+   .sync({ force: dropTables })
    .then(async () => {
-      // seed db if sync is true (if flushing the db)
-      if(config.sync) await seed(db);
+      // seed db if dropping tables (if flushing the db)
+      if(dropTables) await seed(db);
 
       app.listen(PORT, () => {
          console.log("\n🌎 => live on http://localhost:%s", PORT);
       });
-   });
+
+   }).catch(errorHandler);
