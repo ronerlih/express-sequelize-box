@@ -16,7 +16,7 @@ beforeAll(() => {
 afterAll(() => {
 // cleanup.
    // clear tables
-   db.sequelize.drop();
+   // db.sequelize.drop();
    // close connection
    db.sequelize.close();
    jest.clearAllMocks();
