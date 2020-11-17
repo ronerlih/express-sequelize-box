@@ -13,7 +13,10 @@ beforeAll(() => {
 });
 
 // jest hook after all tests
-afterEach(() => db.sequelize.close());
+afterEach(() => {
+   db.sequelize.close();
+   jest.clearAllMocks();
+});
 
 describe("Error handler middleware", () => {
    
@@ -32,8 +35,13 @@ describe("Error handler middleware", () => {
          // ACT
          seed(db);
 
-         // ASSERT
-         expect(seed(db)).resolves.toMatchObject(matchObj);
+         // ASSERT (check that array contains an object, that contains the "🚀 init" value)
+         expect(seed(db)).resolves.toEqual(expect.arrayContaining([
+            expect({comment: "🚀 init"}).toEqual(      
+              expect.objectContaining({  
+                comment: "🚀 init"               
+              }))
+            ]));
       });
    });
 
@@ -46,7 +54,6 @@ describe("Error handler middleware", () => {
          // ACT + ASSERT 
          expect(seed).toThrow(expectedError);
       });
-      
 
       it("return rejected promise if validation doesnt pass", async () => {
          //ARRANGE
@@ -63,7 +70,7 @@ describe("Error handler middleware", () => {
          seed(db);
 
          // ASSERT
-         expect(console.log).toBeCalledWith("\n🚀 init table seed");
+         expect(console.log).toBeCalledWith("\n🚀 init table seed\n");
       });
    });
 });
