@@ -1,7 +1,7 @@
 //=== INITIATION THE CONNECTION TO MYSQL =========================
 const { Sequelize } = require("sequelize");
 
-const sequelize = new Sequelize("polls", "root", "Kristin91", {
+const sequelize = new Sequelize("polls", "root", "Lavillette", {
    host: "localhost",
    port: 3306, 
    dialect: "mysql",

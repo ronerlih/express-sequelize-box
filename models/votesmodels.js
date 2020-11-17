@@ -5,29 +5,20 @@ const Sequelize = require("sequelize");
 const sequelize = require("../config/connection.js");
 
 //=== CHIRP MODEL THAT MATCHES UP WITH DB =======================
-const Poll = sequelize.define("polls", {
-   user: Sequelize.STRING,
-   question: Sequelize.STRING,
-   optionOne: Sequelize.STRING,
-   optionTwo: Sequelize.STRING,
-   optionThree: Sequelize.STRING,
-   optionFour: Sequelize.STRING
+const Votes = sequelize.define("votes", {
+   tally: Sequelize.INTEGER,
+   optionSelect: Sequelize.STRING,
+   pollId: {
+      type: Sequelize.INTEGER,
+      references: {
+         model: "votes",
+         key: "id",
+      }
+   }
 });
 
 //=== SYNCING WITH DB ===========================================
-Poll.sync();
+Votes.sync();
 
 //=== MAKES POLL MODEL AVAILABLE FOR THE OTHER FILES ===========
-module.exports = Poll;
-
-
-
-
-
-
-
-
-
-
-
-
+module.exports = Votes;

@@ -3,20 +3,20 @@ const router = express.Router();
 const app = express();
 const db = require("../../models");
 
-router.get('/', function (req, res) {
-  res.render('index');
+router.get("/", (req, res) => {
+   res.render("index");
 });
 
-router.get('/main', function (req, res) {
-  res.render('main');
+router.get("/main", (req, res) => {
+   res.render("main");
 });
 
-app.get('/viewPolls', function (req, res) {
-  res.render('viewPolls');
+app.get("/viewPolls", (req, res) => {
+   res.render("viewPolls");
 });
 
-app.get('/results', function (req, res) {
-  res.render('results');
+app.get("/results", (req, res) => {
+   res.render("results");
 });
 
 

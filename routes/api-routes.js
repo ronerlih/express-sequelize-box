@@ -1,5 +1,6 @@
 //=== DEPENDENCIES =================================
 const Poll = require("../models/pollmodel.js");
+const Votes = require("../models/votesmodels.js");
 
 //=== ROUTES =======================================
 module.exports = function (app) {
@@ -11,12 +12,19 @@ module.exports = function (app) {
       });
    });
 
+   app.get("/api/votes/:poll", (req, res) => {
+      Votes.findAll({pollId:req.params.poll}).then((results) => {
+         res.json(results);
+      });
+   });
+
    //=== ADD A POLL ===================================
    app.post("/api/new", (req, res) => {
+      console.log("Is this unique???????");
+      console.log(req.body);
       Poll.create(req.body)
          .then((results) => {
-            console.log(results);
-            res.json(results);
+            res.json({...results.dataValues});
          });
    });
 };
