@@ -1,4 +1,8 @@
 //=== CREATE POLL DIV ON CLICK ================================================================================
+
+
+
+
 $("#submitpoll").on("click", (event)=> {
    event.preventDefault();
 
@@ -12,19 +16,35 @@ $("#submitpoll").on("click", (event)=> {
    };
    console.log(newPoll);
 
-   $.post("/api/new", newPoll)
-      .then(() => {
-         const row = $("<div id='vote-form'>");
-         row.append("<p>" + newPoll.user + " asked: </p>");
-         row.append("<p>" + newPoll.question + "</p>");
-         row.append("<input type='radio' name='os'>" + newPoll.optionOne);
-         row.append("<input type='radio' name='os'>" + newPoll.optionTwo);
-         row.append("<input type='radio' name='os'>" + newPoll.optionThree);
-         row.append("<input type='radio' name='os'>" + newPoll.optionFour);
-         row.append("<br>");
-         row.append("<button id='vote-button'>" + "Submit" + "</button>");
-         $("#polldisplay").prepend(row);
+   // $.post("/api/new", newPoll)
+   //    .then(() => {
+   
+     
+
+   const row = $("<div id='vote-form'>");
+   row.append("<p>" + newPoll.user + " asked: </p>");
+   row.append("<p>" + newPoll.question + "</p>");
+   row.append("<input type='radio' name='os' value='"+newPoll.optionOne+"'>" + newPoll.optionOne);
+   row.append("<input type='radio' name='os' value='"+newPoll.optionTwo+"'>" + newPoll.optionTwo);
+   row.append("<input type='radio' name='os' value='"+newPoll.optionThree+"'>" + newPoll.optionThree);
+   row.append("<input type='radio' name='os' value='"+newPoll.optionFour+"'>" + newPoll.optionFour);
+   row.append("<br>");
+   row.append("<button id='vote-button'>Submit</button>");
+   $("#polldisplay").prepend(row);
+
+   $("#vote-button").on("click", ()=>{
+      console.log(data);
+      $.ajax({
+         url: "/api/",
+         method: "GET"
+      }).then((response) => {
+         const choice = document.querySelector("input[name=os]:checked").value;
+      const data = { os: choice };
       });
+   });
+
+
+   // });
 
    //=== CALLING CANVAS JS CHART AND VOTING FUNCTIONS ======================================================
 
@@ -44,22 +64,21 @@ $("#submitpoll").on("click", (event)=> {
 //=== VOTING ============================================================================================
 
  
-$(document).on("click", "#vote-form", () => {
-   const choice = document.querySelector("input[name=os]:checked").value;
-   const data = { os: choice };
+// $(document).on("click", "#vote-form", () => {
+//    
 
-   fetch("http://localhost:3360/poll", {
-      method: "post",
-      body: JSON.stringify(data),
-      headers: new Headers({
-         "Content-Type": "application/json"
-      })
-   })
-      .then(res => res.json())
-      .then(data => console.log(data))
-      .catch(err => console.log(err));
-   e.preventDefault();
-});
+//    fetch("http://localhost:3360/poll", {
+//       method: "post",
+//       body: JSON.stringify(data),
+//       headers: new Headers({
+//          "Content-Type": "application/json"
+//       })
+//    })
+//       .then(res => res.json())
+//       .then(data => console.log(data))
+//       .catch(err => console.log(err));
+//    e.preventDefault();
+// });
 
 voteChart();
 
@@ -67,12 +86,7 @@ voteChart();
 
 
 function voteChart(){
-   $.ajax({
-      url: "/api/all",
-      method: "GET"
-   }).then((response) => {
-      console.log(response);
-   });
+  
 }
 
 
@@ -82,10 +96,10 @@ function voteChart(){
 //=== CANVAS JS CHART ======================================================================
 function renderCanvas(){
    const dataPoints = [
-      {label: "option-one", y: 3},
-      {label: "option-two", y: 1},
-      {label: "option-three", y: 2},
-      {label: "option-four", y: 2}
+      {label: "option-one", y: 0},
+      {label: "option-two", y: 0},
+      {label: "option-three", y: 0},
+      {label: "option-four", y: 0}
    ];
    
    const chartContainer = document.querySelector("#chartContainer");
