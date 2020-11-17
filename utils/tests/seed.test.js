@@ -13,7 +13,14 @@ beforeAll(() => {
 });
 
 // jest hook after all tests
-afterEach(() => db.sequelize.close());
+afterAll(() => {
+// cleanup.
+   // clear tables
+   db.sequelize.drop();
+   // close connection
+   db.sequelize.close();
+   jest.clearAllMocks();
+});
 
 describe("Error handler middleware", () => {
    
@@ -24,17 +31,21 @@ describe("Error handler middleware", () => {
    });
 
    // negative positive error
-   describe("seeds database", () => {
-      it("confim the initial row in comments table", async () => {
+   describe("seeds database", async () => {
+      it("confim the initial row in comments table",  () => {
          // ARRANGE
          const matchObj = { comment: "🚀 init" };
          
-         // ACT
-         seed(db);
 
-         // ASSERT
-         expect(seed(db)).resolves.toMatchObject(matchObj);
-      });
+         // ASSERT (check that array contains an object, that contains the "🚀 init" value)
+         return seed(db).then( seeds => {
+            expect(seeds[0]).toHaveLength(2);
+            expect(seeds[0][0]).toMatchObject(matchObj);
+            db.sequelize.close();
+
+         })
+
+    });
    });
 
    describe("Error handling", () => {
@@ -46,7 +57,6 @@ describe("Error handler middleware", () => {
          // ACT + ASSERT 
          expect(seed).toThrow(expectedError);
       });
-      
 
       it("return rejected promise if validation doesnt pass", async () => {
          //ARRANGE
@@ -63,7 +73,7 @@ describe("Error handler middleware", () => {
          seed(db);
 
          // ASSERT
-         expect(console.log).toBeCalledWith("\n🚀 init table seed");
+         expect(console.log).toBeCalledWith("\n🚀 init table seed\n");
       });
    });
 });
