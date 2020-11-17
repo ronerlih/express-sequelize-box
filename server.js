@@ -39,11 +39,11 @@ app.use(errorHandler);
 
 db.sequelize
    // drop tables on restart?
-   .sync({ force: config.sync })
+   .sync({ force: config.dropTables })
    .then(async () => {
-      
+
       // seed db if dropping tables (if flushing the db)
-      if(config.sync) await seed(db);
+      if(config.dropTables) await seed(db);
 
       app.listen(PORT, () => {
          console.log("\n🌎 => live on http://localhost:%s", PORT);
