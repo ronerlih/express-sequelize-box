@@ -10,7 +10,10 @@
     "database": "test_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "pool": {
+    "dialectOptions": { 
+       "charset": "utf8" 
+    },
+   "pool": {
       "max": 5,
       "idleTimeoutMillis": 15000
     }
