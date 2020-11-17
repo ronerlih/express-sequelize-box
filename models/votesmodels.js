@@ -6,12 +6,11 @@ const sequelize = require("../config/connection.js");
 
 //=== CHIRP MODEL THAT MATCHES UP WITH DB =======================
 const Votes = sequelize.define("votes", {
-   tally: Sequelize.INTEGER,
    optionSelect: Sequelize.STRING,
    pollId: {
       type: Sequelize.INTEGER,
       references: {
-         model: "votes",
+         model: "polls",
          key: "id",
       }
    }

@@ -1,4 +1,4 @@
-$("#submitpoll").on("click", (event)=> {
+$("#submitpoll").on("click", (event) => {
    event.preventDefault();
    const newPoll = {
       user: $("#user").val().trim(),
@@ -8,32 +8,68 @@ $("#submitpoll").on("click", (event)=> {
       optionThree: $("#option-three").val().trim(),
       optionFour: $("#option-four").val().trim()
    };
-   $.post( "/api/new", newPoll, ( data ) => {
+   $.post("/api/new", newPoll, (data) => {
+      console.table(data);
       const row = $("<div id='vote-form'>");
       row.append("<p>" + data.user + " asked: </p>");
       row.append("<p>" + data.question + "</p>");
-      row.append("<input type='radio' name='os' value='"+data.optionOne+"'>" + data.optionOne);
-      row.append("<input type='radio' name='os' value='"+data.optionTwo+"'>" + data.optionTwo);
-      row.append("<input type='radio' name='os' value='"+data.optionThree+"'>" + data.optionThree);
-      row.append("<input type='radio' name='os' value='"+data.optionFour+"'>" + data.optionFour);
+      row.append("<input type='radio' name='os' value='" + data.optionOne + "'>" + data.optionOne);
+      row.append("<input type='radio' name='os' value='" + data.optionTwo + "'>" + data.optionTwo);
+      row.append("<input type='radio' name='os' value='" + data.optionThree + "'>" + data.optionThree);
+      row.append("<input type='radio' name='os' value='" + data.optionFour + "'>" + data.optionFour);
       row.append("<br>");
       row.append("<button id='vote-button'>Submit</button>");
       $("#polldisplay").prepend(row);
-      $("#vote-button").on("click", ()=>{
+      $("#vote-button").on("click", () => {
+         console.log("%c this is the data inside vote btn", "color:green; background-color:yellow; fonts-size:22px");
          console.log(data);
-         $.ajax({
-            url: "/api/votes" + newPoll.pollId,
-            method: "GET"
-         }).then(() => {
-            const choice = document.querySelector("input[name=os]:checked").value;
-            const data = { os: choice };
+         const choice = document.querySelector("input[name=os]:checked").value;
+         const pollData = {
+            optionSelect: choice,
+            pollId: data.id,
+         };
+         $.post("/api/vote", pollData, (data) => {
+            $.get("/api/results", (results) => {
+               // READ NOTE IN PARENTHESES BELOW * * * * * * * * * * * * * * * * * * * * * 
+               renderCanvas(******need to add the 4 values that we get back from the Get Voting Results api call******);
+            });
          });
+
       });
-   });  
+   });
 });
+
+//=== CANVAS JS CHART ======================================================================
+function renderCanvas(opt1, opt2, opt3, opt4) {
+   const dataPoints = [
+      { label: "option-one", y: opt1 },
+      { label: "option-two", y: opt2 },
+      { label: "option-three", y: opt3 },
+      { label: "option-four", y: opt4 }
+   ];
+   const chartContainer = document.querySelector("#chartContainer");
+   // taking data and rendring in chart
+   if (chartContainer) {
+      // ajax call to get data
+      const chart = new CanvasJS.Chart("chartContainer", {
+         animationEnabled: true,
+         theme: "theme1",
+         title: {
+            text: "Bar Results"
+         },
+         data: [
+            {
+               type: "column",
+               dataPoints: dataPoints
+            }
+         ]
+      });
+      chart.render();
+   }
+}
+
 // });
 //=== CALLING CANVAS JS CHART AND VOTING FUNCTIONS ======================================================
-// renderCanvas();
 // $("#cms").empty();
 // $("#user").val("");
 // $("#question").val("");
@@ -57,31 +93,3 @@ $("#submitpoll").on("click", (event)=> {
 //    e.preventDefault();
 // });
 // voteChart();
-//=== CANVAS JS CHART ======================================================================
-// function renderCanvas(){
-//   const dataPoints = [
-//       {label: "option-one", y: 0},
-//       {label: "option-two", y: 0},
-//       {label: "option-three", y: 0},
-//       {label: "option-four", y: 0}
-//   ];
-//   const chartContainer = document.querySelector("#chartContainer");
-//   // taking data and rendring in chart
-//   if(chartContainer){
-//       // ajax call to get data
-//       const chart = new CanvasJS.Chart("chartContainer", {
-//         animationEnabled: true,
-//         theme: "theme1",
-//         title: {
-//             text: "Bar Results"
-//         },
-//         data: [
-//             {
-//               type: "column",
-//               dataPoints: dataPoints
-//             }
-//         ]
-//       });
-//       chart.render();
-//   }
-// }
