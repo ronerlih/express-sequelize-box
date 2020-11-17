@@ -13,7 +13,11 @@ beforeAll(() => {
 });
 
 // jest hook after all tests
-afterEach(() => {
+afterAll(() => {
+// cleanup.
+   // clear tables
+   db.sequelize.drop();
+   // close connection
    db.sequelize.close();
    jest.clearAllMocks();
 });
@@ -27,22 +31,21 @@ describe("Error handler middleware", () => {
    });
 
    // negative positive error
-   describe("seeds database", () => {
-      it("confim the initial row in comments table", async () => {
+   describe("seeds database", async () => {
+      it("confim the initial row in comments table",  () => {
          // ARRANGE
          const matchObj = { comment: "🚀 init" };
          
-         // ACT
-         seed(db);
 
          // ASSERT (check that array contains an object, that contains the "🚀 init" value)
-         expect(seed(db)).resolves.toEqual(expect.arrayContaining([
-            expect({comment: "🚀 init"}).toEqual(      
-              expect.objectContaining({  
-                comment: "🚀 init"               
-              }))
-            ]));
-      });
+         return seed(db).then( seeds => {
+            expect(seeds[0]).toHaveLength(2);
+            expect(seeds[0][0]).toMatchObject(matchObj);
+            db.sequelize.close();
+
+         })
+
+    });
    });
 
    describe("Error handling", () => {
