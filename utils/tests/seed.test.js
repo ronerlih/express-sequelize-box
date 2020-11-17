@@ -8,6 +8,7 @@ global.console.log = jest.fn();
 
 // jest hook before all tests
 beforeEach(() => {
+   db.sequelize.close();
    db = require("../../models");
    jest.clearAllMocks();
 });
