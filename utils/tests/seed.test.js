@@ -16,6 +16,7 @@ beforeAll(async () => {
 // jest hook after all tests
 afterEach(() => {
 // cleanup.
+   db.sequelize.close();
    jest.clearAllMocks();
 });
 
@@ -58,7 +59,7 @@ describe("Error handler middleware", () => {
       it("return rejected promise if validation doesnt pass", async () => {
          //ARRANGE
          const badMassage = new Array(501).fill('i').join('');
-         const expectedError = new Object({"name": "SequelizeValidationError"});
+         const expectedError = {"name": "SequelizeValidationError"};
  
          // ASSERT
          expect(db.Comment.create({comment: badMassage})).rejects.toMatchObject(expectedError);
