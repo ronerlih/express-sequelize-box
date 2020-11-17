@@ -1,6 +1,6 @@
 /* eslint-disable quotes */
 require("mysql2/node_modules/iconv-lite").encodingExists("cesu8");
-// let db = require("../../models");
+let db = require("../../models");
 const seed = require("../seed.js");
 
 // mock the log function to test side-effects
