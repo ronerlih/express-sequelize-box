@@ -7,19 +7,15 @@ const seed = require("../seed.js");
 global.console.log = jest.fn();
 
 // jest hook before all tests
-beforeEach(() => {
-   db.sequelize.close();
+beforeAll(async () => {
    db = require("../../models");
+   await db.sequelize.sync();
    jest.clearAllMocks();
 });
 
 // jest hook after all tests
 afterEach(() => {
 // cleanup.
-   // clear tables
-   // db.sequelize.drop();
-   // close connection
-   // db.sequelize.close();
    jest.clearAllMocks();
 });
 

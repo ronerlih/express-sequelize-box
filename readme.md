@@ -69,6 +69,8 @@
         -   ignore: `.eslintignore`
     -   **Jest**: jestjs.io
         -   test locally in the command line: `jest`
+    -   run trvis locally!
+        -   https://stackoverflow.com/questions/21053657/how-to-run-travis-ci-locally
        
 -   **CODACY** (codacy.com) runs:
       -   **styleLint** (css linter): https://github.com/stylelint/stylelint
