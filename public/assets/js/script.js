@@ -28,10 +28,9 @@ $("#submitpoll").on("click", (event) => {
             optionSelect: choice,
             pollId: data.id,
          };
-         $.post("/api/vote", pollData, (data) => {
-            $.get("/api/results", (results) => {
-               // READ NOTE IN PARENTHESES BELOW * * * * * * * * * * * * * * * * * * * * * 
-               renderCanvas(******need to add the 4 values that we get back from the Get Voting Results api call******);
+         $.post("/api/vote", pollData, (data) => { // NOT SURE WHAT "DATA" IS SAYING
+            $.get("/api/results", (data) => { // NOT SURE WHAT "DATA" IS SAYING
+               renderCanvas(result1, result2, result3, result4); // NEED TO GET PARAMETER VALUES WORKING
             });
          });
 
@@ -55,7 +54,7 @@ function renderCanvas(opt1, opt2, opt3, opt4) {
          animationEnabled: true,
          theme: "theme1",
          title: {
-            text: "Bar Results"
+            text: "Bar Results" // * * * * ** *  * * * Should we make this dynamic text? * * * * * * * * * * * * * *   
          },
          data: [
             {
