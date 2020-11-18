@@ -82,7 +82,7 @@ h1 {
   color: #007bfb;
   font-size: 100px;
   font-family: 'Faster One', cursive;
-  line-height: 40%;
+  line-height: 60%;
 }
 h1:hover {
   opacity: 50%;
@@ -200,13 +200,13 @@ label {
 }
 .box {
   width: 300px;
-  margin: 50px auto;
+  margin: 30px auto;
   background: #007bfb;
-  padding: 20px;
   text-align: center;
-  font-weight: 900;
-  color: #fff;
-  font-family: arial;
+  padding-top: 12px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   position:relative;
 }
 .sb1:before {
@@ -218,7 +218,7 @@ label {
   border-right: 10px solid transparent;
   border-top: 10px solid #007bfb;
   border-bottom: 10px solid transparent;
-  right: 50%;
+  right: 25%;
   bottom: -18px;
 }
 #vote-form {
