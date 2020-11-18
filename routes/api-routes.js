@@ -1,7 +1,6 @@
 //=== DEPENDENCIES =================================
 const Poll = require("../models/pollmodel.js");
 const Votes = require("../models/votesmodels.js");
-const db = require("../db/index");
 
 //=== ROUTES =======================================
 module.exports = function (app) {
@@ -33,55 +32,58 @@ module.exports = function (app) {
    });
 
    //=== GET VOTING RESULTS ===================================
-   // THIS GET REQUEST SHOULD TO DO THE FOLLOWING:
-   // COUNT ALL THE optionSelects THAT ARE THE SAME
-   // RETURN THE COUNT VALUE FOR EACH OPTION
-   // INPUT EACH COUNT VALUE INTO THE renderCanvas (line33) IN SCRIPT.JS
+   // still returning 0's - 
+   app.get("/api/results/:id", (req, res) => {
+      const queryPollId = JSON.parse(req.params.id);
+      // console.log("QUERYPOLLID:", queryPollId);      
+      const optionOneResults = 0;
+      let optionTwoResults = 0;
+      let optionThreeResults = 0;
+      let optionFourResults = 0;
 
-   app.get("/api/results", (req, res) => {
-
+      Votes.findAll({
+         where: { // ============= I think the problems lies in here somewhere. When the 'where' is commented out, we get an array back. When it's there, the array is empty.
+            pollId: queryPollId
+         }
+      }).then((results) => {
+         console.log("RESULTS:", results); // ============= this is returning an empty array. We need to it to be an object
+      }).then((voteResults) => {
+         console.log("VOTE RESULTS:", voteResults);
+         Poll.findAll({
+            where: {
+               id: queryPollId
+            }
+         }).then((pollResults) => {
+            voteResults.forEach((vResult) => {
+               pollResults.forEach((pResult) => {
+                  if (pResult.optionOne === vResult.optionSelection) {
+                     returnoptionOneResults = optionOneResults + 1;
+                  }
+                  if (pResult.optionTwo === vResult.optionSelection) {
+                     optionTwoResults = optionTwoResults + 1;
+                  }
+                  if (pResult.optionOThree === vResult.optionSelection) {
+                     optionThreeResults = optionThreeResults + 1;
+                  }
+                  if (pResult.optionFour === vResult.optionSelection) {
+                     optionFourResults = optionFourResults + 1;
+                  }
+               });
+            });
+         });
+         console.log("ONE", optionOneResults);
+         console.log("TWO", optionTwoResults);
+         console.log("THREE", optionThreeResults);
+         console.log("FOUR", optionFourResults);
+      });
       res.json({
-
+         optionOneResults,
+         optionTwoResults,
+         optionThreeResults,
+         optionFourResults,
       });
 
 
-      // const optionOneResults = 0;
-      // let optionTwoResults = 0;
-      // let optionThreeResults = 0;
-      // let optionFourResults = 0;
-      // Votes.findAll().then((voteResults) => {
-      //    Poll.findAll().then((pollResults) => {
-      //       voteResults.forEach((vResult) => {
-      //          pollResults.forEach((pResult) => {
-      //             if (pResult.optionOne === vResult.optionSelection) {
-      //                returnoptionOneResults = optionOneResults + 1;
-      //             }
-      //             if (pResult.optionTwo === vResult.optionSelection) {
-      //                optionTwoResults = optionTwoResults + 1;
-      //             }
-      //             if (pResult.optionOThree === vResult.optionSelection) {
-      //                optionThreeResults = optionThreeResults + 1;
-      //             }
-      //             if (pResult.optionFour === vResult.optionSelection) {
-      //                optionFourResults = optionFourResults + 1;
-      //             }
-      //          });
-      //       });
-      //    });
-      // });
-      // console.log("ONE", optionOneResults);
-      // console.log("TWO", optionTwoResults);
-      // console.log("THREE", optionThreeResults);
-      // console.log("FOUR", optionFourResults);
-      // res.json({
-      //    optionOneResults,
-      //    optionTwoResults,
-      //    optionThreeResults,
-      //    optionFourResults,
-      // });
-
-
-      
    });
 
 
