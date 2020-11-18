@@ -17,7 +17,7 @@ const Votes = sequelize.define("votes", {
 });
 
 //=== SYNCING WITH DB ===========================================
-Votes.sync();
+Votes.sync({force:true});
 
 //=== MAKES POLL MODEL AVAILABLE FOR THE OTHER FILES ===========
 module.exports = Votes;

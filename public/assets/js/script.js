@@ -34,10 +34,10 @@ $("#submitpoll").on("click", (event) => {
                console.log("SCRIPT.JS CONSOLE LOG DATA:", data);
                // renderCanvas(optionOneResults, optionTwoResults, optionThreeResults, optionFourResults,); // NEED TO GET PARAMETER VALUES WORKING
                const dataPoints = [
-                  { label: "option-one", y: opt1 },
-                  { label: "option-two", y: opt2 },
-                  { label: "option-three", y: opt3 },
-                  { label: "option-four", y: opt4 }
+                  { label: "option-one", y: 1 },
+                  { label: "option-two", y: 2},
+                  { label: "option-three", y: 0 },
+                  { label: "option-four", y: 1 }
                ];
                const chartContainer = document.querySelector("#chartContainer");
                // taking data and rendring in chart
