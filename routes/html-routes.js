@@ -9,6 +9,11 @@ module.exports = function(app) {
    app.get("/", (req, res) => {
       res.render("index");
    });
+
+   app.get("/polls", (req, res) => {
+      res.render("polls");
+   });
+
    // router.get("/main", (req, res) => {
    //    res.render("main");
    // });

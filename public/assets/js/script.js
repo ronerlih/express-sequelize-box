@@ -32,7 +32,33 @@ $("#submitpoll").on("click", (event) => {
             // console.log("NEW CONSOLE LOG: ===========", data);
             $.get("/api/results/" + data.id, (data) => {
                console.log("SCRIPT.JS CONSOLE LOG DATA:", data);
-               renderCanvas(optionOneResults, optionTwoResults, optionThreeResults, optionFourResults,); // NEED TO GET PARAMETER VALUES WORKING
+               // renderCanvas(optionOneResults, optionTwoResults, optionThreeResults, optionFourResults,); // NEED TO GET PARAMETER VALUES WORKING
+               const dataPoints = [
+                  { label: "option-one", y: opt1 },
+                  { label: "option-two", y: opt2 },
+                  { label: "option-three", y: opt3 },
+                  { label: "option-four", y: opt4 }
+               ];
+               const chartContainer = document.querySelector("#chartContainer");
+               // taking data and rendring in chart
+               if (chartContainer) {
+                  // ajax call to get data
+                  const chart = new CanvasJS.Chart("chartContainer", {
+                     animationEnabled: true,
+                     theme: "theme1",
+                     title: {
+                        text: "Results"
+                     },
+                     data: [
+                        {
+                           type: "column",
+                           dataPoints: dataPoints
+                        }
+                     ]
+                  });
+                  chart.render();
+               }
+
             });
          });
 
@@ -41,33 +67,7 @@ $("#submitpoll").on("click", (event) => {
 });
 
 //=== CANVAS JS CHART ======================================================================
-function renderCanvas(opt1, opt2, opt3, opt4) {
-   const dataPoints = [
-      { label: "option-one", y: opt1 },
-      { label: "option-two", y: opt2 },
-      { label: "option-three", y: opt3 },
-      { label: "option-four", y: opt4 }
-   ];
-   const chartContainer = document.querySelector("#chartContainer");
-   // taking data and rendring in chart
-   if (chartContainer) {
-      // ajax call to get data
-      const chart = new CanvasJS.Chart("chartContainer", {
-         animationEnabled: true,
-         theme: "theme1",
-         title: {
-            text: "Results"
-         },
-         data: [
-            {
-               type: "column",
-               dataPoints: dataPoints
-            }
-         ]
-      });
-      chart.render();
-   }
-}
+
 
 // });
 //=== CALLING CANVAS JS CHART AND VOTING FUNCTIONS ======================================================

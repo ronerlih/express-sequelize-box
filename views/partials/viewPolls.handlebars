@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>POLLIFE</title>
-    {{> head}}
-  </head>
-
+<table class=" table table-dark table-striped text-center">
     <tbody>
-        {{#each polls}}
+        {{#each Poll}}
         <tr>
-            <td> {{this.dataValues.question}}</td>
+            <td> {{this.dataValues.question}}</td> 
         </tr>
         {{/each}}
     </tbody>
 </table>
-
-{{ footer }}
-</html>
