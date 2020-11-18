@@ -82,9 +82,12 @@ h1 {
   color: #007bfb;
   font-size: 100px;
   font-family: 'Faster One', cursive;
-  line-height: 95%;
+  line-height: 40%;
 }
-h2 {
+h1:hover {
+  opacity: 50%;
+}
+h2  {
   color: #007bfb;
   font-size: 10px;
   letter-spacing: 1px;
@@ -92,9 +95,17 @@ h2 {
   font-family: 'Text Me One', sans-serif;
   line-height: 50%;
 }
-h3, a {
+h3 {
   color: #007bfb;
   font-size: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: 'Text Me One', sans-serif;
+}
+p {
+  color: #007bfb;
+  font-size: 14px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   font-family: 'Text Me One', sans-serif;
 }
@@ -111,7 +122,6 @@ h5 {
   letter-spacing: 1px;
   text-transform: uppercase;
   font-family: 'Text Me One', sans-serif;
-  line-height: 50%;
 }
 h6 {
     color: #ffffff;
@@ -167,7 +177,7 @@ label {
   display: inline-block;
 }
 /* Style the submit button */
-#submitpoll {
+#submitpoll, #vote-button {
   display: block;
   margin: auto;
   background-color: #007bfb;
@@ -210,4 +220,20 @@ label {
   border-bottom: 10px solid transparent;
   right: 50%;
   bottom: -18px;
+}
+#vote-form {
+  color: #007bfb;
+  margin: 50px auto;
+  padding: 20px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: 'Text Me One', sans-serif;
+  line-height: 75%;
+  resize: vertical;
+  display: block;
+  text-align: center;
+}
+input[type="radio"] {
+  margin: 0 10px 0 0;
 }

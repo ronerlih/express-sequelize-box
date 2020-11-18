@@ -11,13 +11,13 @@ $("#submitpoll").on("click", (event) => {
    $.post("/api/new", newPoll, (data) => {
       console.table(data);
       const row = $("<div id='vote-form'>");
-      row.append("<p>" + data.user + " asked: </p>");
+      row.append("<h3>" + data.user + " asked: </h3>");
       row.append("<p>" + data.question + "</p>");
       row.append("<input type='radio' name='os' value='" + data.optionOne + "'>" + data.optionOne);
-      row.append("<input type='radio' name='os' value='" + data.optionTwo + "'>" + data.optionTwo);
-      row.append("<input type='radio' name='os' value='" + data.optionThree + "'>" + data.optionThree);
-      row.append("<input type='radio' name='os' value='" + data.optionFour + "'>" + data.optionFour);
-      row.append("<br>");
+      row.append("<br><br><input type='radio' name='os' value='" + data.optionTwo + "'>" + data.optionTwo);
+      row.append("<br><br><input type='radio' name='os' value='" + data.optionThree + "'>" + data.optionThree);
+      row.append("<br><br><input type='radio' name='os' value='" + data.optionFour + "'>" + data.optionFour);
+      row.append("<br><br><br>");
       row.append("<button id='vote-button'>Submit</button>");
       $("#polldisplay").prepend(row);
       $("#vote-button").on("click", () => {
@@ -31,7 +31,7 @@ $("#submitpoll").on("click", (event) => {
          $.post("/api/vote", pollData, (data) => {
             $.get("/api/results", (results) => {
                // READ NOTE IN PARENTHESES BELOW * * * * * * * * * * * * * * * * * * * * * 
-               renderCanvas(******need to add the 4 values that we get back from the Get Voting Results api call******);
+              // renderCanvas(need to add the 4 values that we get back from the Get Voting Results api call);
             });
          });
 
@@ -93,3 +93,5 @@ function renderCanvas(opt1, opt2, opt3, opt4) {
 //    e.preventDefault();
 // });
 // voteChart();
+
+
