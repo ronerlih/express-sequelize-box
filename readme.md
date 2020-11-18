@@ -1,30 +1,37 @@
-![https://travis-ci.com/ronerlih/express-sequelize-box](https://travis-ci.com/ronerlih/express-sequelize-box.svg?branch=main&status=passed) ![https://app.codacy.com/gh/ronerlih/express-sequelize-box/dashboard](https://app.codacy.com/project/badge/Grade/d54fbe2005594f5884b61dbdf22ea604)
-# 📦 Express Sequelize box
+# POLLIFE
 
-## To-Do: Readme!
+## Readme!
 
-## Use
-- Fork or clone and copy what you need
+## Links
+Deployed Heroku: http://pollife.herokuapp.com/
+GitHub Repo: https://github.com/carolynmary/pollife
 
-## env vars
-- for production set on heroku: https://dashboard.heroku.com/apps/<app-name>/settings -> reveal env vars
-- locally: creat a `.env` file with key and value pair in form/url encoding `SECRET_KEY=val`
-- connection code on models/index.js: !['assets/connection.png'](assets/connection.png)
+## Description
+POLLIFE, with a simple, user friendly interface, allows the user to quickly and easily create a poll, allow others to vote in their poll, and then to see the results.
 
-## Folder structure
-!['assets/structure.png'](assets/structure.png)
+## Installation
+To install necessary dependencies run command `npm i`
 
-## CI
-- travis: travis.io
-- code coverage: codacy.com
-- monitor on: https://ronerlih.loggly.com/search?terms=tag:heroku&from=-20m&until=now&source_group=&newtab=1#terms=&from=2020-11-07T12:03:00.296Z&until=2020-11-07T13:03:00.296Z&source_group=
+## Built With
+Node & Express server
+Handlebars
+MySQL
+Sequelize
+CanvasJS (for chart visualization)
 
-## To-Do:
-- write tests (Jest / mocha+chai)
-   - send test reports to code covarage 
+## Build Status
+Travis
 
-- log (winston/ bunyan/ log4js/ morgan)
-   - dashborad monitor + notifications
+## Further Development
+Future development features will include but are not limited to:
 
-## Further
-- express best practices: https://expressjs.com/en/advanced/best-practice-performance.html
+- Additional poll options which will allow the user to create a poll using a rating system, a request for input, or a sliding scale. 
+- Users will be able to signup and login to keep track of polls and results. 
+- Users will be able to generate a shareable link of their poll to give to friends to vote. 
+- Users will be able to make ‘public’ polls for the whole world to contribute an opinion, which will appear on the public app interface (think Venmo), or ‘private’ for close friends, which will only appear between specified users or with those who have the link.
+
+## Credits
+POLLIFE was created by [Carolyn Stolze](https://github.com/carolynmary), [Kristin Jacobsen](https://github.com/ktinj), and [Vladimir Zizic](https://github.com/Vllaadd)
+
+
+

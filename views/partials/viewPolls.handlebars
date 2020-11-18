@@ -5,14 +5,22 @@
     {{> head}}
   </head>
 
-    <tbody>
-        {{#each polls}}
-        <tr>
-            <td> {{this.dataValues.question}}</td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
+<div class="row">
+			<div class="col-md-8 offset-md-2">
+				<div class="poll-container">
+					<h1>Polls</h1>
+					<table class="table table-striped">
+						<thead>
+						<tr>
+						<td> {{ user }}</td>
+            <td> {{ question }}</td>
+            <td> {{ optionOne }}</td>
+            <td> {{ optionTwo }}</td>
+            <td> {{ optionThree }}</td>
+            <td> {{ optionFour }}</td>
+							</tr>
+						</thead>
+
 
 {{ footer }}
 </html>

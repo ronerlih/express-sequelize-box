@@ -21,10 +21,22 @@
       {{> createPoll}}
    </div>
 
-   {{!-- RESULTS HANDLEBARS --}}
-   <div class="row">
-      {{> results}}
-   </div>
+   {{!-- POLLS HANDLEBARS --}}
+   <table>
+   <tbody>
+   {{#each this.id}}
+      <tr>
+            <td> {{ user }}</td>
+            <td> {{ question }}</td>
+            <td> {{ optionOne }}</td>
+            <td> {{ optionTwo }}</td>
+            <td> {{ optionThree }}</td>
+            <td> {{ optionFour }}</td>
+      </tr>
+      {{/each}}
+   </tbody>
+</table>
+
 
 
 <br><br><br>
@@ -32,6 +44,10 @@
 
 {{!-- FOOTER --}}
 <footer> <br>
+<div>
+<a href="/polls" action="/api/all" method="GET">view polls</a>
+</div>
+<br><br>
    <h2>all votes are legal, official, and final. No recounts.</h2><br>
 	<small>&copy; COPYRIGHT 2020, POLLIFE</small> </footer>
 

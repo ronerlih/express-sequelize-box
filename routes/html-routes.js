@@ -9,13 +9,9 @@ module.exports = function(app) {
    app.get("/", (req, res) => {
       res.render("index");
    });
-   // router.get("/main", (req, res) => {
-   //    res.render("main");
-   // });
-   // app.get("/viewPolls", (req, res) => {
-   //    res.render("viewPolls");
-   // });
-   // app.get("/results", (req, res) => {
-   //    res.render("results");
-   // });
+   
+app.get("/api/all", function(req, res) {
+      res.sendFile(path.join(__dirname, "./views/partials/viewPolls.handlebars"));
+   });
+
 };

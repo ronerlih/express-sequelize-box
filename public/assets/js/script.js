@@ -34,39 +34,12 @@ $("#submitpoll").on("click", (event) => {
               // renderCanvas(need to add the 4 values that we get back from the Get Voting Results api call);
             });
          });
-
       });
    });
 });
 
 //=== CANVAS JS CHART ======================================================================
-function renderCanvas(opt1, opt2, opt3, opt4) {
-   const dataPoints = [
-      { label: "option-one", y: opt1 },
-      { label: "option-two", y: opt2 },
-      { label: "option-three", y: opt3 },
-      { label: "option-four", y: opt4 }
-   ];
-   const chartContainer = document.querySelector("#chartContainer");
-   // taking data and rendring in chart
-   if (chartContainer) {
-      // ajax call to get data
-      const chart = new CanvasJS.Chart("chartContainer", {
-         animationEnabled: true,
-         theme: "theme1",
-         title: {
-            text: "Bar Results"
-         },
-         data: [
-            {
-               type: "column",
-               dataPoints: dataPoints
-            }
-         ]
-      });
-      chart.render();
-   }
-}
+
 
 // });
 //=== CALLING CANVAS JS CHART AND VOTING FUNCTIONS ======================================================
