@@ -1,3 +1,3 @@
 module.exports ={
-   sync: true
+   dropTables: true
 };
