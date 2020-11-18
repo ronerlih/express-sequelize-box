@@ -46,7 +46,7 @@ module.exports = function (app) {
             pollId: queryPollId
          }
       }).then((results) => {
-         console.log("RESULTS:", results); // ============= this is returning an empty array. We need to it to be an object
+         console.log("RESULTS:", results); // ============= this is returning an empty array. We need to it to be an object      
       }).then((voteResults) => {
          console.log("VOTE RESULTS:", voteResults);
          Poll.findAll({
@@ -57,7 +57,7 @@ module.exports = function (app) {
             voteResults.forEach((vResult) => {
                pollResults.forEach((pResult) => {
                   if (pResult.optionOne === vResult.optionSelection) {
-                     returnoptionOneResults = optionOneResults + 1;
+                     returnoptionOneResults = optionOneResults + 1; // push results to empty object instead?
                   }
                   if (pResult.optionTwo === vResult.optionSelection) {
                      optionTwoResults = optionTwoResults + 1;
