@@ -12,6 +12,7 @@ module.exports = function (app) {
       });
    });
 
+   //=== POST A VOTE ===================================
    app.post("/api/vote", (req, res) => {
       // console.log(req.body);
       Votes.create(req.body).then((results) => {
@@ -22,8 +23,8 @@ module.exports = function (app) {
 
    //=== ADD A POLL ===================================
    app.post("/api/new", (req, res) => {
-      console.log("Is this unique???????");
-      console.log(req.body);
+      // console.log("Is this unique???????");
+      // console.log(req.body);
       Poll.create(req.body)
          .then((results) => {
             res.json({ ...results.dataValues });
@@ -31,24 +32,32 @@ module.exports = function (app) {
    });
 
    //=== GET VOTING RESULTS ===================================
-   // THIS GET REQUEST SHOULD TO DO THE FOLLOWING:
-   // COUNT ALL THE optionSelects THAT ARE THE SAME
-   // RETURN THE COUNT VALUE FOR EACH OPTION
-   // INPUT EACH COUNT VALUE INTO THE renderCanvas (line33) IN SCRIPT.JS
-
-   // This is where we left off w Peter, NOT clean code but was a down and dirty solution because of time. 
-   // This isn't exactly working, when we console log on 66-69, we're not getting the value we want. 
-   app.get("/api/results", (req, res) => {
-      let optionOneResults = 0;
+   // still returning 0's - 
+   app.get("/api/results/:id", (req, res) => {
+      const queryPollId = JSON.parse(req.params.id);
+      console.log("QUERYPOLLID:", queryPollId);
+      const optionOneResults = 0;
       let optionTwoResults = 0;
       let optionThreeResults = 0;
       let optionFourResults = 0;
-      Votes.findAll().then((voteResults) => {
-         Poll.findAll().then((pollResults) => {
+
+      Votes.findAll({
+         where: { // ============= I think the problems lies in here somewhere. When the 'where' is commented out, we get an array back. When it's there, the array is empty.
+            pollId: queryPollId
+         }
+      }).then((results) => {
+         console.log("RESULTS:", results); // ============= this is returning an empty array. We need to it to be an object      
+      }).then((voteResults) => {
+         console.log("VOTE RESULTS:", voteResults);
+         Poll.findAll({
+            where: {
+               id: queryPollId
+            }
+         }).then((pollResults) => {
             voteResults.forEach((vResult) => {
                pollResults.forEach((pResult) => {
                   if (pResult.optionOne === vResult.optionSelection) {
-                     returnoptionOneResults = optionOneResults + 1;
+                     returnoptionOneResults = optionOneResults + 1; // push results to empty object instead?
                   }
                   if (pResult.optionTwo === vResult.optionSelection) {
                      optionTwoResults = optionTwoResults + 1;
@@ -62,17 +71,19 @@ module.exports = function (app) {
                });
             });
          });
+         console.log("ONE", optionOneResults);
+         console.log("TWO", optionTwoResults);
+         console.log("THREE", optionThreeResults);
+         console.log("FOUR", optionFourResults);
       });
-      console.log("ONE", optionOneResults);
-      console.log("TWO", optionTwoResults);
-      console.log("THREE", optionThreeResults);
-      console.log("FOUR", optionFourResults);
       res.json({
          optionOneResults,
          optionTwoResults,
          optionThreeResults,
          optionFourResults,
       });
+
+      
    });
 
 

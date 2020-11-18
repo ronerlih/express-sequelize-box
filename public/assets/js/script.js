@@ -29,9 +29,10 @@ $("#submitpoll").on("click", (event) => {
             pollId: data.id,
          };
          $.post("/api/vote", pollData, (data) => {
-            $.get("/api/results", (results) => {
-               // READ NOTE IN PARENTHESES BELOW * * * * * * * * * * * * * * * * * * * * * 
-              // renderCanvas(need to add the 4 values that we get back from the Get Voting Results api call);
+            // console.log("NEW CONSOLE LOG: ===========", data);
+            $.get("/api/results/" + data.id, (data) => {
+               console.log("SCRIPT.JS CONSOLE LOG DATA:", data);
+               renderCanvas(optionOneResults, optionTwoResults, optionThreeResults, optionFourResults,); // NEED TO GET PARAMETER VALUES WORKING
             });
          });
 
@@ -55,7 +56,7 @@ function renderCanvas(opt1, opt2, opt3, opt4) {
          animationEnabled: true,
          theme: "theme1",
          title: {
-            text: "Bar Results"
+            text: "Results"
          },
          data: [
             {
