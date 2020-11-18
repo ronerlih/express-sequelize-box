@@ -1,9 +1,20 @@
-<table class=" table table-dark table-striped text-center">
-    <tbody>
-        {{#each polls}}
-        <tr>
-            <td> {{this.dataValues.question}}</td> 
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>POLLIFE</title>
+   {{> head}}
+</head>
+
+{{!-- VIEW ALL POLLS HANDLEBARS --}}
+<div class="row">
+   {{> viewPolls}}
+</div>
+
+<footer>
+   <h2>Disclaimer: all votes are legal, official, and final.</h2><br>
+   <small>&copy; COPYRIGHT 2020, POLLIFE</small>
+</footer>
+
+</html>
+

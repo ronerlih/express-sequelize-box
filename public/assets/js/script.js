@@ -61,7 +61,6 @@ $("#submitpoll").on("click", (event) => {
 
             });
          });
-
       });
    });
 });

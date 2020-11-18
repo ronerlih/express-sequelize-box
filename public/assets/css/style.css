@@ -85,10 +85,11 @@ h1 {
   line-height: 60%;
 }
 h1:hover {
-  opacity: 50%;
+  opacity: 75%;
 }
-h2  {
+h2, a  {
   color: #007bfb;
+  text-align: center;
   font-size: 10px;
   letter-spacing: 1px;
   text-transform: uppercase;

@@ -11,6 +11,7 @@ module.exports = function (app) {
       res.render("index");
    });
 
+
    app.get("/polls", (req, res) => {
       Poll.findAll({}).then((results) => {
          res.render("polls", { polls: results });
@@ -25,5 +26,4 @@ module.exports = function (app) {
    // });
    // app.get("/results", (req, res) => {
    //    res.render("results");
-   // });
 };
