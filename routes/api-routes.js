@@ -46,7 +46,7 @@ module.exports = function (app) {
             pollId: queryPollId
          }
       }).then((results) => {
-         console.log("RESULTS:", results); // ============= this is returning an empty array. We need to it to be an object      
+         console.log("RESULTS:", results.votes); // ============= this is returning an empty array. We need to it to be an object      
       }).then((voteResults) => {
          console.log("VOTE RESULTS:", voteResults);
          Poll.findAll({
