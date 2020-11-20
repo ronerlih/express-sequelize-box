@@ -1,7 +1,7 @@
 const errorHandler = require("../errorHandler.js");
 
 // var setup
-   global.console.warn = jest.fn();
+global.console.warn = jest.fn();
 // mocking a response object for the handler to use, adding only th eredirect method that will be used.
 const mockRes = ({status: jest.fn(), statusCode: 200, end: jest.fn()});
 const mockRequest = {};
