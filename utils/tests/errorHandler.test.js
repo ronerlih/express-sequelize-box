@@ -1,6 +1,9 @@
 const errorHandler = require("../errorHandler.js");
-global.console.log = jest.fn();
-const mockRequest = {};
+
+// var setup
+   global.console.log = jest.fn();
+   global.console.warn = jest.fn();
+
 
 // clear mocks before each test
 beforeEach(() => {
@@ -20,33 +23,73 @@ describe("Error handler middleware", () => {
    });
 
    describe("Error handling", () => {
-
-      it("should redirect regardless of the error", () => {
+      
+      it("should set status to 500 if no status assigned", () => {
+         
+         // To-Do: use supertest for testing routes
          
          // setup a fake request, 
-         // To-Do: use supertest for testing routes
          const fakeError = new Error("fake error msg");
          // mocking a response object for the handler to use, adding only th eredirect method that will be used.
-         const mockRes = { redirect: jest.fn(() => "redirected") };
+         const mockRes = ({status: jest.fn(), statusCode: 200, end: jest.fn()});
+         const mockRequest = {};
 
-         expect(
-            errorHandler(fakeError, mockRequest, mockRes))    
-            .toEqual( "redirected" );
+         // ACT
+         errorHandler(fakeError, mockRequest, mockRes);
+
+         // ASSERT
+         expect(mockRes.status).toBeCalledWith(500);    
       });
 
-      it("should log error", () => {
+      it("should not set status if it's already set (not 200)", () => {
          
+         // To-Do: use supertest for testing routes
+         
+         // setup a fake request, 
+         const fakeError = new Error("fake error msg");
+         // mocking a response object for the handler to use, adding only th eredirect method that will be used.
+         const mockRes = ({status: jest.fn(), statusCode: 401, end: jest.fn()});
+         const mockRequest = {};
+
+         // ACT
+         errorHandler(fakeError, mockRequest, mockRes);
+
+         // ASSERT
+         expect(mockRes.status).not.toBeCalled();    
+      });
+
+      it("should send the error msg to front end", () => {
+         
+         // To-Do: use supertest for testing routes
+         
+         // setup a fake request, 
+         const fakeError = new Error("fake error msg");
+         // mocking a response object for the handler to use, adding only th eredirect method that will be used.
+         const mockRes = ({status: jest.fn(), statusCode: 200, end: jest.fn()});
+         const mockRequest = {};
+
+         // ACT
+         errorHandler(fakeError, mockRequest, mockRes);
+
+         // ASSERT
+         expect(mockRes.end).toBeCalledWith(fakeError.message);    
+      });
+
+      
+      it("should log error (side effects test)", () => {
+         const mockRes = ({status: jest.fn(), statusCode: 200, end: jest.fn()});
+         const mockRequest = {};
+
          // ARRANGE 
          // setup a logging library for monitoring, 
          const fakeError = new Error("fake error msg");
-         const mockRes = { redirect: jest.fn(() => "redirected") };
 
          // ACT 
          errorHandler(fakeError, mockRequest, mockRes);
          
          // ASSERT
-         expect(console.log).toBeCalled();
-         expect(console.log).toBeCalledWith("fake error msg");
+         expect(console.warn).toBeCalled();
+         expect(console.warn).toBeCalledWith("[node] ", "fake error msg");
       });
    });
 });

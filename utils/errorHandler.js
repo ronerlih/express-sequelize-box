@@ -5,7 +5,7 @@ module.exports = function (err, req, res, next) {
 
    // log error to monitor
    // for development
-   console.error("[node] ", err.message);
+   console.warn("[node] ", err.message);
    if(res.statusCode === 200) res.status(500);
 
    return res.end(err.message);
