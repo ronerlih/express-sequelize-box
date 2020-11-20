@@ -1,8 +1,10 @@
 const errorHandler = require("../errorHandler.js");
 
 // var setup
-   global.console.log = jest.fn();
    global.console.warn = jest.fn();
+// mocking a response object for the handler to use, adding only th eredirect method that will be used.
+const mockRes = ({status: jest.fn(), statusCode: 200, end: jest.fn()});
+const mockRequest = {};
 
 
 // clear mocks before each test
@@ -30,10 +32,7 @@ describe("Error handler middleware", () => {
          
          // setup a fake request, 
          const fakeError = new Error("fake error msg");
-         // mocking a response object for the handler to use, adding only th eredirect method that will be used.
-         const mockRes = ({status: jest.fn(), statusCode: 200, end: jest.fn()});
-         const mockRequest = {};
-
+         
          // ACT
          errorHandler(fakeError, mockRequest, mockRes);
 
@@ -63,11 +62,9 @@ describe("Error handler middleware", () => {
          // To-Do: use supertest for testing routes
          
          // setup a fake request, 
-         const fakeError = new Error("fake error msg");
+         const fakeError = new Error("fake error msg 1");
          // mocking a response object for the handler to use, adding only th eredirect method that will be used.
-         const mockRes = ({status: jest.fn(), statusCode: 200, end: jest.fn()});
-         const mockRequest = {};
-
+        
          // ACT
          errorHandler(fakeError, mockRequest, mockRes);
 
@@ -82,14 +79,14 @@ describe("Error handler middleware", () => {
 
          // ARRANGE 
          // setup a logging library for monitoring, 
-         const fakeError = new Error("fake error msg");
+         const fakeError = new Error("fake error msg 2");
 
          // ACT 
          errorHandler(fakeError, mockRequest, mockRes);
          
          // ASSERT
          expect(console.warn).toBeCalled();
-         expect(console.warn).toBeCalledWith("[node] ", "fake error msg");
+         expect(console.warn).toBeCalledWith("[node] ", fakeError.message);
       });
    });
 });
