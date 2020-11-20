@@ -45,8 +45,7 @@ db.sequelize
       // seed db if dropping tables (if flushing the db)
       if(config.dropTables) await seed(db);
 
-      app.listen(PORT, () => {
-         console.log("\n🌎 => live on http://localhost:%s", PORT);
-      });
+      app.listen(PORT, () => console.log("\n🌎 => live on http://localhost:%s", PORT));
 
    }).catch(errorHandler);
+  

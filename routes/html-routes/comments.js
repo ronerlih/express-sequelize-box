@@ -3,7 +3,8 @@ const router = express.Router();
 const db = require("../../models");
 
 // HOME page
-router.get("/", (req, res) => {
+router.get("/", (req, res, next) => {
+
    // get comments from db and send to template
    db.Comment.findAll({})
       .then((comments) => {
