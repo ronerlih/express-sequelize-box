@@ -1,6 +1,5 @@
 # POLLIFE
-
-## Readme!
+## Readme!!
 
 ## Links
 Deployed Heroku: http://pollife.herokuapp.com/
@@ -18,9 +17,6 @@ Handlebars
 MySQL
 Sequelize
 CanvasJS (for chart visualization)
-
-## Build Status
-Travis
 
 ## Further Development
 Future development features will include but are not limited to:
