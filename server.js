@@ -7,7 +7,7 @@ const { seed } = require("./utils/seed");
 const errorHandler = require("./utils/errorHandler");
 
 module.exports = (() => {
-   return new Promise(async (resolve) => {
+   return new Promise((resolve) => {
       const PORT = process.env.PORT || 3000;
       const app = express();
 
@@ -39,20 +39,20 @@ module.exports = (() => {
       // error handling
       app.use(errorHandler);
 
-      // drops all tables on eevery restart
-      await db.sequelize.sync({ force: config.dropTables });
+      // start listening and return the promise after connecting to dbs
+      app.listen(PORT, async () => {
 
-      // add close method on app (for testing db)
-      app.close = db.sequelize.close;
+         // drops all tables on eevery restart
+         await db.sequelize.sync({ force: config.dropTables });
 
-      // seed db if sync is true (if flushing the db)
-      if (config.dropTables) await seed(db);
+         // add close method on app (for testing db)
+         app.close = db.sequelize.close;
 
-      app.listen(PORT, () => {
+         // seed db if sync is true (if flushing the db)
+         if (config.dropTables) await seed(db);
+
          console.log("\n🌎 => live on http://localhost:%s", PORT);
          return resolve(app);
-
       });
-
    });
 })();
