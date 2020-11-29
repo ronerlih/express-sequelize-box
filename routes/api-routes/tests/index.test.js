@@ -18,7 +18,8 @@ beforeAll( async done => {
    superApp = supertest(app);
    
    jest.clearAllMocks();
-   done(); return;
+   done(); 
+   return;
 
 });
 
