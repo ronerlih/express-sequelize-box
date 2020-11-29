@@ -16,6 +16,7 @@ beforeAll(() => {
 afterAll(() => {
 // cleanup.
    jest.clearAllMocks();
+   db.sequelize.close()
 });
 
 describe("Error handler middleware", () => {
