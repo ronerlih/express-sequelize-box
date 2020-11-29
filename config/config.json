@@ -23,7 +23,7 @@
    "use_env_variable": "JAWSDB_URL",
    "dialect": "mysql",
    "dialectOptions": { 
-      "charset": "utf8mb4" 
+      "charset": "utf8" 
    } 
   }
 }
