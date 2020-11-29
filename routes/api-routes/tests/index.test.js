@@ -15,8 +15,8 @@ global.console.log = jest.fn();
 // jest hook before all tests
 beforeAll( async done => {
    app = await require('../../../server');
-   superApp = supertest(app);
-   
+   superApp = require('supertest')(`http://localhost:${process.env.PORT || 3000}`);
+
    jest.clearAllMocks();
    
    return done(); 
