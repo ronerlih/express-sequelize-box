@@ -1,22 +1,20 @@
 /* eslint-disable quotes */
 require("mysql2/node_modules/iconv-lite").encodingExists("cesu8");
-let db = require("../../models");
-const seed = require("../seed.js");
+let db = require("../../models");;
+const {seed} = require("../seed.js");
 
 // mock the log function to test side-effects
 global.console.log = jest.fn();
 
 // jest hook before all tests
-beforeAll(async () => {
-   db = require("../../models");
-   await db.sequelize.sync();
+beforeAll(() => {
+   // db = require("../../models");
    jest.clearAllMocks();
 });
 
 // jest hook after all tests
-afterEach(() => {
+afterAll(() => {
 // cleanup.
-   db.sequelize.close();
    jest.clearAllMocks();
 });
 
@@ -56,13 +54,14 @@ describe("Error handler middleware", () => {
          expect(seed).toThrow(expectedError);
       });
 
-      it("return rejected promise if validation doesnt pass", async () => {
+      it("return rejected promise if validation doesnt pass", async done => {
          //ARRANGE
          const badMassage = new Array(501).fill('i').join('');
          const expectedError = {"name": "SequelizeValidationError"};
  
          // ASSERT
          expect(db.Comment.create({comment: badMassage})).rejects.toMatchObject(expectedError);
+         done();
       });
    });
 
