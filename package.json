@@ -5,10 +5,10 @@
   "main": "server.js",
   "scripts": {
     "test": "NODE_ENV=test && npm run lint && jest --verbose --runInBand --detectOpenHandles",
-    "start": "node server.js",
+    "start": "node index.js",
     "lint": "eslint --quiet .",
     "fix": "eslint --fix .",
-    "watch": "nodemon server.js"
+    "watch": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
