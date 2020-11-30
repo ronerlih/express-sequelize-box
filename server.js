@@ -1,9 +1,6 @@
-const config = require("./config");
 const express = require("express");
 const apiRoutes = require("./routes/api-routes");
 const htmlRoutes = require("./routes/html-routes");
-const db = require("./models");
-const { seed } = require("./utils/seed");
 const errorHandler = require("./utils/errorHandler");
 
 module.exports = (() => {
@@ -41,15 +38,6 @@ module.exports = (() => {
 
       // start listening and return the promise after connecting to dbs
       app.listen(PORT, async () => {
-
-         // drops all tables on eevery restart
-         await db.sequelize.sync({ force: config.dropTables });
-
-         // add close method on app (for testing db)
-         app.close = db.sequelize.close;
-
-         // seed db if sync is true (if flushing the db)
-         if (config.dropTables) await seed(db);
 
          console.log("\n🌎 => live on http://localhost:%s", PORT);
          return resolve(app);
