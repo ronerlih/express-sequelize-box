@@ -112,7 +112,6 @@
 
 -   write routes tests (supertest?)
 -   write sequelize tests (models folder)
--   send test reports to code covarage
 -   log (winston/ bunyan/ log4js/ morgan/?), currently Heroku defualt logs
 
 

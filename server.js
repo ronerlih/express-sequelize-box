@@ -1,12 +1,16 @@
 const express = require("express");
+const compression = require("compression");
 const apiRoutes = require("./routes/api-routes");
 const htmlRoutes = require("./routes/html-routes");
 const errorHandler = require("./utils/errorHandler");
+
 
 module.exports = (() => {
    return new Promise((resolve) => {
       const PORT = process.env.PORT || 3000;
       const app = express();
+      
+      app.use(compression());
 
       // good place for a logging middleware
 
