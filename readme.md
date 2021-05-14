@@ -2,13 +2,16 @@
 
 # 📦 Express Sequelize box
 
-##### :earth_africa: [live](https://express-sequelize-box.herokuapp.com/) on heroku
+## :earth_africa: [live](https://express-sequelize-box.herokuapp.com/) on heroku
+
+![screenshot](assets/screenshot.png)
+
 ## 🍽 Use
 -   Fork or clone and copy what you need
 
 ## 🗒️ Development notes
 
-### 🗃️ Folder structure
+## 🗃️ Folder structure
 ```sh
 .
 ├── assets         <- # project management
